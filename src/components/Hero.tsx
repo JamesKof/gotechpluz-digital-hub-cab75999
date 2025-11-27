@@ -14,21 +14,21 @@ const Hero = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+        <div className="max-w-5xl mx-auto text-center animate-fade-in-up">
           <div className="inline-block mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
-            <p className="text-primary font-semibold text-sm">Tech Agency with Global Reach</p>
+            <p className="text-primary font-semibold text-sm">Technology Solution Providers • Local with Global Influence</p>
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Elevating Digital
+            We Build <span className="bg-gradient-primary bg-clip-text text-transparent">
+              Edgy Digital Experiences
             </span>
             <br />
-            Experience
+            That Drive Results
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Empowering global success through innovative digital solutions. From web development to digital marketing, we transform businesses with cutting-edge technology.
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            Connecting the dots between technology, marketing, and creativity to help you engage customers and accelerate revenue growth. We craft out-of-the-box solutions for businesses worldwide.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -37,7 +37,7 @@ const Hero = () => {
               onClick={scrollToContact}
               className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-medium text-base"
             >
-              Start Your Project
+              Let's Talk About Your Project
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
@@ -49,8 +49,27 @@ const Hero = () => {
               }}
               className="border-primary text-primary hover:bg-primary/10 text-base"
             >
-              Explore Services
+              Discover What We Do
             </Button>
+          </div>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mb-8 text-sm">
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-1">50+</div>
+              <div className="text-muted-foreground">Projects</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-1">3+</div>
+              <div className="text-muted-foreground">Countries</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-1">98%</div>
+              <div className="text-muted-foreground">Satisfaction</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-1">24/7</div>
+              <div className="text-muted-foreground">Support</div>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-muted-foreground">

@@ -10,18 +10,18 @@ const Home = () => {
   const highlights = [
     {
       icon: Sparkles,
-      title: "Creative Excellence",
-      description: "Transforming ideas into stunning digital realities with innovative design and technology"
+      title: "Out-of-the-Box Solutions",
+      description: "We build edgy user experiences and digital products that stand out in the crowded marketplace"
     },
     {
       icon: Zap,
-      title: "Lightning Fast",
-      description: "Rapid deployment and execution without compromising quality or attention to detail"
+      title: "Proven Methodology",
+      description: "Our systematic approach—Listen, Research, Implement, Test, Launch, Grow—ensures success every time"
     },
     {
       icon: TrendingUp,
-      title: "Growth Focused",
-      description: "Strategic solutions designed to scale your business and maximize ROI"
+      title: "Revenue-Driven Results",
+      description: "Goal-oriented solutions that help you make more money constantly and improve business operations"
     }
   ];
 
@@ -33,15 +33,31 @@ const Home = () => {
       {/* Quick Intro Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="max-w-5xl mx-auto text-center animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Bridging <span className="bg-gradient-primary bg-clip-text text-transparent">Creativity</span> with Technology
+              Digital Solutions That <span className="bg-gradient-primary bg-clip-text text-transparent">Transform</span> Your Business
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              We merge artistic vision with cutting-edge technology to deliver responsive websites, 
-              mobile applications, e-commerce platforms, and comprehensive digital marketing solutions 
-              that drive measurable results for businesses worldwide.
+            <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
+              We recreate traditional business processes and simplify complex activities through innovative 
+              technology solutions. Our goal-oriented approach helps businesses worldwide access new markets, 
+              increase operational efficiency, and dramatically accelerate revenue growth.
             </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <div className="text-4xl font-bold text-primary mb-2">$2M+</div>
+                <p className="text-muted-foreground">Revenue Generated for Clients</p>
+              </div>
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <div className="text-4xl font-bold text-primary mb-2">300%</div>
+                <p className="text-muted-foreground">Average ROI Increase</p>
+              </div>
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <div className="text-4xl font-bold text-primary mb-2">5+</div>
+                <p className="text-muted-foreground">Years of Excellence</p>
+              </div>
+            </div>
+
             <div className="flex flex-wrap gap-4 justify-center">
               <Link to="/services">
                 <Button size="lg" className="bg-gradient-primary hover:opacity-90">
@@ -50,7 +66,7 @@ const Home = () => {
               </Link>
               <Link to="/contact">
                 <Button size="lg" variant="outline">
-                  Start Your Project
+                  Get Free Consultation
                 </Button>
               </Link>
             </div>

@@ -85,13 +85,13 @@ const ServicesPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="bg-gradient-primary bg-clip-text text-transparent">Services</span>
+              Digital Solutions That <span className="bg-gradient-primary bg-clip-text text-transparent">Drive Growth</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Comprehensive digital solutions designed to elevate your brand and accelerate growth
+            <p className="text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
+              From websites and mobile apps to branding and marketing—we offer comprehensive tech-based solutions that recreate traditional business processes and simplify operations for lasting success
             </p>
             <p className="text-lg text-muted-foreground/80">
-              Before you ask, we do it all. We're the strategic partners behind the scenes, connecting your campaigns with the right audiences in the dynamic digital landscape.
+              Before you ask, yes—we do it all. We're the strategic partners connecting the dots between technology, marketing, and creativity to help you make more money constantly and improve business operations.
             </p>
           </div>
         </div>
