@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -14,104 +15,221 @@ import {
   Smartphone,
   Globe,
   ShoppingCart,
-  Heart
+  Heart,
+  Building2,
+  Send
 } from "lucide-react";
+import ProjectInquiryForm from "@/components/ProjectInquiryForm";
+import ghanaEximHero from "@/assets/portfolio-ghana-exim.jpg";
+import healthConnectHero from "@/assets/portfolio-health-connect.jpg";
+import transitGatewayHero from "@/assets/portfolio-transit-gateway.jpg";
+import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
+import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
+import prudentialHero from "@/assets/portfolio-prudential.jpg";
 
 const PortfolioPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const categories = [
+    "All",
+    "Web Development",
+    "Mobile Apps",
+    "Government",
+    "Healthcare",
+    "Finance",
+    "E-commerce",
+    "Branding"
+  ];
+
   const caseStudies = [
     {
       id: 1,
-      title: "Welhaven Homecare Application",
-      client: "Welhaven Homecare",
-      category: "Mobile App Development",
-      description: "Comprehensive mobile application for homecare services, available on both Android and iOS platforms. Features include real-time care scheduling, patient management, caregiver tracking, and secure communication channels.",
-      challenge: "Welhaven needed a robust mobile solution to streamline their homecare operations, improve communication between caregivers and patients, and provide real-time updates to family members.",
-      solution: "We developed a full-featured mobile app with cross-platform compatibility, integrating GPS tracking, push notifications, secure messaging, and an intuitive scheduling system.",
+      title: "Ghana EXIM Bank Digital Platform",
+      client: "Ghana Export-Import Bank",
+      category: "Web Development",
+      tags: ["Web Development", "Finance", "Government"],
+      link: "https://ghana-exim.vercel.app/",
+      description: "Complete digital banking platform for Ghana's principal export finance institution, providing innovative financial solutions to boost exports and strengthen economic ties across Africa.",
+      challenge: "Ghana EXIM Bank needed a modern, secure platform to serve exporters, provide facility applications, and deliver real-time information about trade finance products while maintaining government-level security standards.",
+      solution: "We built a comprehensive web platform with secure facility applications, product showcases, real-time updates, integrated payment systems, and a responsive design optimized for mobile banking.",
       results: [
-        { metric: "85%", label: "Efficiency Increase" },
-        { metric: "40%", label: "Cost Reduction" },
-        { metric: "4.8/5", label: "User Rating" },
-        { metric: "10k+", label: "Active Users" }
+        { metric: "300%", label: "Online Applications" },
+        { metric: "65%", label: "Processing Speed" },
+        { metric: "4.9/5", label: "User Satisfaction" },
+        { metric: "24/7", label: "Service Availability" }
       ],
-      technologies: ["React Native", "Node.js", "PostgreSQL", "Firebase", "Google Maps API"],
+      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "Security Protocols"],
+      heroImage: ghanaEximHero,
       testimonial: {
-        quote: "Gotechpluz transformed our operations completely. The app has become indispensable to our daily workflow, and our clients love the transparency it provides.",
-        author: "Operations Director",
-        company: "Welhaven Homecare"
+        quote: "Gotechpluz delivered a world-class platform that has revolutionized how we serve Ghana's exporters. The system is secure, intuitive, and has significantly improved our service delivery.",
+        author: "Chief Digital Officer",
+        company: "Ghana EXIM Bank"
       },
-      icon: Smartphone,
-      color: "from-blue-500 to-cyan-500"
+      icon: Building2,
+      color: "from-blue-600 to-yellow-500"
     },
     {
       id: 2,
-      title: "Talent Homecare Digital Platform",
-      client: "Talent Homecare",
-      category: "Web Development & Branding",
-      description: "A complete digital transformation including website development, brand identity redesign, and digital marketing strategy to position Talent Homecare as a premium care provider in competitive markets.",
-      challenge: "Talent Homecare needed to modernize their online presence, establish trust with potential clients, and differentiate themselves from competitors in the healthcare space.",
-      solution: "We created a comprehensive digital ecosystem including a responsive website with booking functionality, SEO-optimized content, brand guidelines, and targeted marketing campaigns.",
+      title: "Ghana Health Connect - NHIS Platform",
+      client: "National Health Insurance Scheme",
+      category: "Web Development",
+      tags: ["Web Development", "Healthcare", "Government"],
+      link: "https://ghana-health-connect.vercel.app/",
+      description: "Comprehensive national health insurance platform providing financial access to quality healthcare for all residents in Ghana, covering 95% of disease conditions across 16 regions.",
+      challenge: "The NHIS needed a modern digital platform to manage millions of members, provide registration services, facility locators, and deliver health information while ensuring data security and accessibility.",
+      solution: "We developed a full-featured healthcare platform with member registration, facility finder, claims management, mobile-responsive design, and secure patient data handling.",
       results: [
-        { metric: "250%", label: "Traffic Increase" },
-        { metric: "180%", label: "Lead Generation" },
-        { metric: "95%", label: "Client Satisfaction" },
-        { metric: "60%", label: "Conversion Rate Boost" }
+        { metric: "2M+", label: "Active Members" },
+        { metric: "4000+", label: "Facilities Connected" },
+        { metric: "95%", label: "Disease Coverage" },
+        { metric: "16", label: "Regions Served" }
       ],
-      technologies: ["React", "Tailwind CSS", "Node.js", "SEO Optimization", "Google Analytics"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "HIPAA Compliance"],
+      heroImage: healthConnectHero,
       testimonial: {
-        quote: "Working with Gotechpluz was a game-changer. They didn't just build us a website—they created a complete digital strategy that has driven incredible growth.",
-        author: "Marketing Manager",
-        company: "Talent Homecare"
+        quote: "The platform has transformed how Ghanaians access healthcare information and services. It's user-friendly, secure, and has significantly improved our operational efficiency.",
+        author: "Digital Health Director",
+        company: "Ghana Health Connect"
       },
       icon: Heart,
-      color: "from-pink-500 to-rose-500"
+      color: "from-blue-500 to-green-500"
     },
     {
       id: 3,
-      title: "Prudential Insurance Website Redesign",
-      client: "Prudential Insurance",
-      category: "Enterprise Web Solution",
-      description: "Enterprise-level website redesign for a major insurance provider, focusing on user experience, accessibility, and conversion optimization. Integrated quote calculator and policy management portal.",
-      challenge: "The existing website was outdated, difficult to navigate, and failing to convert visitors into leads. The client needed a modern, secure platform that could handle high traffic volumes.",
-      solution: "We delivered a complete website overhaul with modern UI/UX design, integrated CRM system, automated quote generation, secure client portal, and comprehensive analytics dashboard.",
+      title: "Ghana Immigration Service Portal",
+      client: "Ghana Immigration Service",
+      category: "Government Portal",
+      tags: ["Web Development", "Government"],
+      link: "https://ghana-transit-gateway.vercel.app/",
+      description: "Official government service portal for the Ghana Immigration Service, regulating migration and facilitating mobility with professional service delivery and national security focus.",
+      challenge: "GIS needed a comprehensive digital platform for visa applications, permit processing, status tracking, and providing information to citizens and visitors while maintaining high security standards.",
+      solution: "We created a secure government portal with online applications, document upload, real-time status tracking, appointment booking, multilingual support, and integrated payment systems.",
       results: [
-        { metric: "320%", label: "Online Quotes" },
-        { metric: "150%", label: "User Engagement" },
-        { metric: "45%", label: "Bounce Rate Drop" },
-        { metric: "200%", label: "Policy Sign-ups" }
+        { metric: "400%", label: "Online Applications" },
+        { metric: "70%", label: "Processing Time Reduction" },
+        { metric: "30M+", label: "Population Served" },
+        { metric: "24/7", label: "Service Access" }
       ],
-      technologies: ["React", "TypeScript", "AWS", "REST API", "Stripe Integration"],
+      technologies: ["React", "TypeScript", "Government Security Standards", "PostgreSQL", "Payment Gateway"],
+      heroImage: transitGatewayHero,
       testimonial: {
-        quote: "The new website has exceeded all our expectations. Gotechpluz delivered a professional, secure, and high-performing platform that our clients love.",
-        author: "Digital Transformation Lead",
-        company: "Prudential Insurance"
+        quote: "This platform has modernized our operations and significantly improved service delivery to Ghanaians and visitors alike. It's secure, efficient, and user-friendly.",
+        author: "Director of Digital Services",
+        company: "Ghana Immigration Service"
       },
       icon: Globe,
-      color: "from-purple-500 to-indigo-500"
+      color: "from-green-600 to-yellow-500"
+    },
+    {
+      id: 4,
+      title: "Alor & Associates Business Hub",
+      client: "Alor & Associates",
+      category: "Corporate Website",
+      tags: ["Web Development", "Branding"],
+      link: "https://alor-connect-gh.vercel.app/",
+      description: "Premier business consulting and advisory services platform helping organizations across Ghana achieve sustainable growth and excellence through professional services.",
+      challenge: "Alor & Associates needed a professional digital presence to showcase their consulting services, build credibility, and attract corporate clients in Ghana's competitive market.",
+      solution: "We built a sophisticated corporate website with service showcases, case study galleries, client testimonials, contact forms, and a professional design reflecting their industry expertise.",
+      results: [
+        { metric: "200+", label: "Active Clients" },
+        { metric: "150%", label: "Lead Generation" },
+        { metric: "95%", label: "Client Satisfaction" },
+        { metric: "15+", label: "Years Experience" }
+      ],
+      technologies: ["React", "Tailwind CSS", "TypeScript", "SEO Optimization", "Analytics"],
+      heroImage: alorConnectHero,
+      testimonial: {
+        quote: "Gotechpluz created a website that truly represents our brand and professionalism. We've seen a significant increase in inquiries from high-quality clients.",
+        author: "Managing Partner",
+        company: "Alor & Associates"
+      },
+      icon: Building2,
+      color: "from-blue-700 to-indigo-600"
+    },
+    {
+      id: 5,
+      title: "Viva Health Foundation Platform",
+      client: "Viva Health Medical Foundation",
+      category: "Non-Profit Healthcare",
+      tags: ["Web Development", "Mobile Apps", "Healthcare"],
+      link: "https://vivahealth.vercel.app/",
+      description: "Non-profit healthcare organization platform empowering lives through medical outreach, free screenings, and accessible health education for underserved communities.",
+      challenge: "Viva Health needed a digital platform to showcase programs, accept donations, recruit volunteers, share impact stories, and manage community health initiatives efficiently.",
+      solution: "We developed a comprehensive non-profit platform with donation integration, volunteer management, program showcases, blog features, gallery, and mobile-optimized design.",
+      results: [
+        { metric: "6+", label: "Years Impact" },
+        { metric: "1000+", label: "Lives Touched" },
+        { metric: "50+", label: "Active Volunteers" },
+        { metric: "300%", label: "Donation Increase" }
+      ],
+      technologies: ["React", "Stripe Donations", "Content Management", "Mobile Responsive", "SEO"],
+      heroImage: vivaHealthHero,
+      testimonial: {
+        quote: "The platform has helped us reach more communities and volunteers. It beautifully tells our story and has increased both donations and volunteer signups significantly.",
+        author: "Founder",
+        company: "Viva Health Foundation"
+      },
+      icon: Heart,
+      color: "from-orange-500 to-green-500"
+    },
+    {
+      id: 6,
+      title: "Prudential Life Insurance Ghana",
+      client: "Prudential Life Insurance",
+      category: "Enterprise Insurance Portal",
+      tags: ["Web Development", "Finance"],
+      link: "https://www.prudential.com.gh/",
+      description: "Enterprise insurance platform providing life insurance products, claims management, and customer service for one of Ghana's leading insurance providers.",
+      challenge: "Prudential needed to modernize their digital presence with an enterprise-grade platform for policy management, claims processing, premium payments, and customer engagement.",
+      solution: "We delivered a comprehensive insurance platform with product showcases, online applications, premium calculators, secure policy portals, payment integration, and responsive design.",
+      results: [
+        { metric: "200%", label: "Online Applications" },
+        { metric: "150%", label: "Customer Engagement" },
+        { metric: "60%", label: "Processing Efficiency" },
+        { metric: "4.7/5", label: "Customer Rating" }
+      ],
+      technologies: ["Enterprise CMS", "Payment Gateway", "Customer Portal", "Security Compliance", "Analytics"],
+      heroImage: prudentialHero,
+      testimonial: {
+        quote: "The platform has transformed how we serve our customers. It's professional, secure, and has significantly improved our digital service delivery.",
+        author: "Head of Digital",
+        company: "Prudential Life Insurance Ghana"
+      },
+      icon: Building2,
+      color: "from-red-600 to-red-500"
     }
   ];
+
+  const filteredProjects = selectedCategory === "All" 
+    ? caseStudies 
+    : caseStudies.filter(study => study.tags.includes(selectedCategory));
 
   const additionalProjects = [
     {
       title: "E-commerce Platform Launch",
       category: "E-commerce",
+      tags: ["E-commerce"],
       impact: "500% revenue increase in 6 months",
       icon: ShoppingCart
     },
     {
       title: "Corporate Branding Suite",
-      category: "Graphic Design",
+      category: "Branding",
+      tags: ["Branding"],
       impact: "Brand recognition up 85%",
       icon: Award
     },
     {
       title: "Social Media Campaign",
       category: "Digital Marketing",
+      tags: [],
       impact: "300k+ engagement reach",
       icon: Users
     },
     {
       title: "SEO Optimization Project",
       category: "SEO & Marketing",
+      tags: [],
       impact: "First page ranking for 50+ keywords",
       icon: TrendingUp
     }
@@ -138,8 +256,26 @@ const PortfolioPage = () => {
         </div>
       </section>
 
+      {/* Category Filter */}
+      <section className="py-8 bg-background sticky top-0 z-10 border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className={selectedCategory === category ? "bg-gradient-primary" : ""}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Case Studies */}
-      {caseStudies.map((study, index) => {
+      {filteredProjects.map((study, index) => {
         const Icon = study.icon;
         return (
           <section 
@@ -149,10 +285,22 @@ const PortfolioPage = () => {
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
                 <Card className="overflow-hidden border-border hover:border-primary/30 transition-all duration-300">
+                  {/* Hero Image */}
+                  {study.heroImage && (
+                    <div className="relative h-80 overflow-hidden">
+                      <img 
+                        src={study.heroImage} 
+                        alt={study.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    </div>
+                  )}
+                  
                   {/* Project Header */}
                   <div className={`bg-gradient-to-r ${study.color} p-8 md:p-12 text-white`}>
                     <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 flex-1">
                         <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                           <Icon className="h-8 w-8" />
                         </div>
@@ -163,6 +311,17 @@ const PortfolioPage = () => {
                           <h2 className="text-3xl md:text-4xl font-bold">{study.title}</h2>
                         </div>
                       </div>
+                      {study.link && (
+                        <a 
+                          href={study.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                        >
+                          <span>Visit Site</span>
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      )}
                     </div>
                     <p className="text-lg opacity-90 max-w-3xl">
                       {study.description}
@@ -299,6 +458,23 @@ const PortfolioPage = () => {
         </div>
       </section>
 
+      {/* Project Inquiry Form Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Have a <span className="bg-gradient-primary bg-clip-text text-transparent">Similar Project</span>?
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Tell us about your project and we'll get back to you within 24 hours. All inquiries are also sent to our WhatsApp for instant updates.
+              </p>
+            </div>
+            <ProjectInquiryForm />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-hero">
         <div className="container mx-auto px-4">
@@ -310,9 +486,18 @@ const PortfolioPage = () => {
               Join our growing list of satisfied clients who have transformed their businesses with our innovative digital solutions
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact">
+              <a 
+                href="https://wa.me/0247233996?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20Gotechpluz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg" className="bg-gradient-primary hover:opacity-90">
-                  Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
+                  Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              <Link to="/contact">
+                <Button size="lg" variant="outline">
+                  Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link to="/services">
