@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Briefcase, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProjectsPage = () => {
   const projects = [
@@ -135,16 +136,16 @@ const ProjectsPage = () => {
                 Let's collaborate to bring your vision to life. Our team is ready to transform your ideas into reality.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <a href="/contact" className="inline-block">
+                <Link to="/contact" className="inline-block">
                   <button className="px-8 py-3 bg-gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
                     Get Started
                   </button>
-                </a>
-                <a href="/services" className="inline-block">
+                </Link>
+                <Link to="/services" className="inline-block">
                   <button className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-muted transition-colors">
                     Explore Services
                   </button>
-                </a>
+                </Link>
               </div>
             </Card>
           </div>
