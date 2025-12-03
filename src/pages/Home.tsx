@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { ArrowRight, Sparkles, Zap, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -29,6 +30,21 @@ const Home = () => {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+
+      {/* Client Testimonials Carousel */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What Our <span className="bg-gradient-accent bg-clip-text text-transparent">Clients Say</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Don't just take our word for it - hear from businesses we've helped transform
+            </p>
+          </div>
+          <TestimonialsCarousel />
+        </div>
+      </section>
       
       {/* Quick Intro Section */}
       <section className="py-20 bg-muted/30">
