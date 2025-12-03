@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -12,8 +13,10 @@ const Hero = () => {
   const openWhatsAppChat = () => {
     const whatsappNumber = "233247233996";
     const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I\'d like to discuss a project."
+      "Hi Gotechpluz, I'd like to discuss a project."
     );
+
+    trackWhatsAppClick("hero_whatsapp_cta");
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
 

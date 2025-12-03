@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -27,11 +28,12 @@ const Contact = () => {
       `Message: ${formData.message}`
     );
 
+    trackWhatsAppClick("contact_form_submit");
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
 
     toast({
       title: "Message Sent!",
-      description: "We\'ve opened a WhatsApp chat so we can respond even faster.",
+      description: "We've opened a WhatsApp chat so we can respond even faster.",
     });
 
     setFormData({ name: "", email: "", phone: "", message: "" });
@@ -69,10 +71,11 @@ const Contact = () => {
                     <p className="text-muted-foreground text-sm mb-1">
                       <a
                         href={`https://wa.me/233247233996?text=${encodeURIComponent(
-                          "Hi Gotechpluz, I\'d like to inquire about your services."
+                          "Hi Gotechpluz, I'd like to inquire about your services."
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackWhatsAppClick("contact_card_link")}
                         className="text-primary hover:underline"
                       >
                         +233 247 233 996 (WhatsApp)

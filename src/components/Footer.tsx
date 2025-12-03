@@ -1,4 +1,5 @@
 import logo from "@/assets/gotechpluz-logo.png";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,10 +32,11 @@ const Footer = () => {
                 <li>
                   <a
                     href={`https://wa.me/233247233996?text=${encodeURIComponent(
-                      "Hi Gotechpluz, I\'d like to inquire about your services."
+                      "Hi Gotechpluz, I'd like to inquire about your services."
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick("footer_whatsapp_link")}
                     className="hover:text-primary transition-colors"
                   >
                     WhatsApp: +233 247 233 996
