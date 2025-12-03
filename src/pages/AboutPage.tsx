@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Target, Eye, Globe2, Shield, Lightbulb, Users, Heart, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   const whyChooseUs = [
@@ -219,11 +220,11 @@ const AboutPage = () => {
                       Call: 024 723 3996
                     </Button>
                   </a>
-                  <a href="/contact">
+                  <Link to="/contact">
                     <Button size="lg" variant="outline">
                       Get Free Consultation
                     </Button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
