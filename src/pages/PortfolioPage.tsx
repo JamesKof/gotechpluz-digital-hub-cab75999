@@ -27,6 +27,7 @@ import transitGatewayHero from "@/assets/portfolio-transit-gateway.jpg";
 import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
 import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
 import prudentialHero from "@/assets/portfolio-prudential.jpg";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const PortfolioPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -537,15 +538,20 @@ const PortfolioPage = () => {
               Join our growing list of satisfied clients who have transformed their businesses with our innovative digital solutions
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a 
-                href="https://wa.me/0247233996?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20Gotechpluz"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                size="lg"
+                className="bg-gradient-primary hover:opacity-90"
+                onClick={() => {
+                  const whatsappNumber = "233247233996";
+                  const whatsappMessage = encodeURIComponent(
+                    "Hello, I would like to discuss a project with Gotechpluz."
+                  );
+                  trackWhatsAppClick("portfolio_cta_whatsapp");
+                  window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+                }}
               >
-                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
-                  Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
+                Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
+              </Button>
               <Link to="/contact">
                 <Button size="lg" variant="outline">
                   Contact Us <ArrowRight className="ml-2 h-4 w-4" />
