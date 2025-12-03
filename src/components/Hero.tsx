@@ -1,8 +1,11 @@
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
+  const { toast } = useToast();
+
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -17,6 +20,10 @@ const Hero = () => {
     );
 
     trackWhatsAppClick("hero_whatsapp_cta");
+    toast({
+      title: "Opening WhatsApp chat",
+      description: "Our team will respond as soon as possible.",
+    });
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
 

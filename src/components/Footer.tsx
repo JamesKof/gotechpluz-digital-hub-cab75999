@@ -1,8 +1,10 @@
 import logo from "@/assets/gotechpluz-logo.png";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { toast } = useToast();
 
   return (
     <footer className="bg-foreground/5 border-t border-border py-12">
@@ -36,7 +38,13 @@ const Footer = () => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackWhatsAppClick("footer_whatsapp_link")}
+                    onClick={() => {
+                      trackWhatsAppClick("footer_whatsapp_link");
+                      toast({
+                        title: "Opening WhatsApp chat",
+                        description: "You'll be connected to our support team.",
+                      });
+                    }}
                     className="hover:text-primary transition-colors"
                   >
                     WhatsApp: +233 247 233 996

@@ -15,6 +15,7 @@ const Navigation = () => {
     { href: "/portfolio", label: "Portfolio" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
+    { href: "/analytics", label: "Analytics" },
   ];
 
   const isActive = (path: string) => location.pathname === path;

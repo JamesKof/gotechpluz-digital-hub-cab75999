@@ -75,7 +75,13 @@ const Contact = () => {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => trackWhatsAppClick("contact_card_link")}
+                        onClick={() => {
+                          trackWhatsAppClick("contact_card_link");
+                          toast({
+                            title: "Opening WhatsApp chat",
+                            description: "You'll be able to talk to us instantly.",
+                          });
+                        }}
                         className="text-primary hover:underline"
                       >
                         +233 247 233 996 (WhatsApp)

@@ -1,7 +1,10 @@
 import { MessageCircle } from "lucide-react";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
 
 const FloatingWhatsAppButton = () => {
+  const { toast } = useToast();
+
   const handleClick = () => {
     const whatsappNumber = "233247233996";
     const whatsappMessage = encodeURIComponent(
@@ -9,6 +12,10 @@ const FloatingWhatsAppButton = () => {
     );
 
     trackWhatsAppClick("floating_whatsapp_button");
+    toast({
+      title: "Opening WhatsApp support",
+      description: "You'll chat directly with our team.",
+    });
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
 
