@@ -15,8 +15,9 @@ const FloatingWhatsAppButton = () => {
 
     trackWhatsAppClick("floating_whatsapp_button");
     toast({
-      title: "Opening WhatsApp support",
-      description: "You'll chat directly with our team.",
+      title: "Opening WhatsApp chat",
+      description:
+        "You'll chat directly with our team. If a new tab doesn't open, please allow popups or call 024 723 3996.",
     });
     const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     if (!newWindow) {

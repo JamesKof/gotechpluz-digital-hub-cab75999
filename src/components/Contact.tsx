@@ -38,7 +38,8 @@ const Contact = () => {
 
     toast({
       title: "Message Sent!",
-      description: "We've opened a WhatsApp chat so we can respond even faster.",
+      description:
+        "We've opened a WhatsApp chat so we can respond even faster. If a new tab doesn't open, please allow popups or call 024 723 3996.",
     });
 
     setFormData({ name: "", email: "", phone: "", message: "" });
@@ -84,7 +85,8 @@ const Contact = () => {
                           trackWhatsAppClick("contact_card_link");
                           toast({
                             title: "Opening WhatsApp chat",
-                            description: "You'll be able to talk to us instantly.",
+                            description:
+                              "You'll be able to talk to us instantly. If a new tab doesn't open, please allow popups or call 024 723 3996.",
                           });
                         }}
                         className="text-primary hover:underline"
