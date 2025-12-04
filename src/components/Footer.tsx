@@ -49,8 +49,11 @@ const Footer = () => {
                   >
                     WhatsApp: +233 247 233 996
                   </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+                  </p>
                 </li>
-                <li>0207292967</li>
+                <li>Call: 024 723 3996</li>
                 <li>info@gotechpluz.com</li>
                 <li>La Tebu Cr, Accra-Ghana</li>
               </ul>

@@ -111,6 +111,9 @@ const Hero = () => {
               <span>La Tebu Cr, Accra-Ghana</span>
             </div>
           </div>
+          <p className="mt-3 text-xs text-muted-foreground">
+            WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+          </p>
         </div>
       </div>
       

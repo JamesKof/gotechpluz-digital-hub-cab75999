@@ -8,13 +8,28 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  const openWhatsAppFromNav = () => {
+    const whatsappNumber = "233247233996";
+    const whatsappMessage = encodeURIComponent(
+      "Hi Gotechpluz, I'd like to discuss a project."
+    );
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    const newWindow = window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
+  };
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -43,11 +58,13 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact">
-              <Button className="bg-gradient-primary hover:opacity-90 transition-opacity">
-                Get Started
-              </Button>
-            </Link>
+            <Button
+              type="button"
+              className="bg-gradient-primary hover:opacity-90 transition-opacity"
+              onClick={openWhatsAppFromNav}
+            >
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -78,11 +95,16 @@ const Navigation = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="bg-gradient-primary hover:opacity-90 transition-opacity w-full">
-                  Get Started
-                </Button>
-              </Link>
+              <Button
+                type="button"
+                className="bg-gradient-primary hover:opacity-90 transition-opacity w-full"
+                onClick={() => {
+                  setIsOpen(false);
+                  openWhatsAppFromNav();
+                }}
+              >
+                Get Started
+              </Button>
             </div>
           </div>
         )}

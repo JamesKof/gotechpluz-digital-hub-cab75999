@@ -92,7 +92,10 @@ const Contact = () => {
                         +233 247 233 996 (WhatsApp)
                       </a>
                     </p>
-                    <p className="text-muted-foreground text-sm">Alternate line: 020 729 2967</p>
+                    <p className="text-xs text-muted-foreground mb-1">
+                      WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+                    </p>
+                    <p className="text-muted-foreground text-sm">Call: 024 723 3996</p>
                   </div>
                 </div>
               </Card>
