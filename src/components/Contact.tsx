@@ -28,8 +28,13 @@ const Contact = () => {
       `Message: ${formData.message}`
     );
 
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
     trackWhatsAppClick("contact_form_submit");
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
 
     toast({
       title: "Message Sent!",
