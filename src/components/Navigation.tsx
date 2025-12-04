@@ -3,25 +3,18 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/gotechpluz-logo.png";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
+  const { openWhatsApp, helperText } = useWhatsApp();
   const openWhatsAppFromNav = () => {
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I'd like to discuss a project."
-    );
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-    const newWindow = window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
+    openWhatsApp({
+      source: "nav_get_started",
+      message: "Hi Gotechpluz, I'd like to discuss a project.",
+      toastTitle: "Opening WhatsApp chat",
+    });
   };
 
   const navLinks = [

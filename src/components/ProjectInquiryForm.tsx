@@ -8,10 +8,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Send, Loader2 } from "lucide-react";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const ProjectInquiryForm = () => {
   const { toast } = useToast();
+  const { openWhatsAppUrl } = useWhatsApp();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -41,15 +42,11 @@ const ProjectInquiryForm = () => {
 
       // Open WhatsApp in new tab if URL is provided
       if (data?.whatsappUrl) {
-        trackWhatsAppClick("project_inquiry_submit");
-        const newWindow = window.open(
-          data.whatsappUrl,
-          "_blank",
-          "noopener,noreferrer"
-        );
-        if (!newWindow) {
-          window.location.href = data.whatsappUrl;
-        }
+        openWhatsAppUrl({
+          source: "project_inquiry_submit",
+          url: data.whatsappUrl,
+          toastTitle: "Opening WhatsApp chat",
+        });
       }
 
       // Reset form
