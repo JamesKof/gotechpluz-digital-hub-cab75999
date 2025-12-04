@@ -41,7 +41,14 @@ const ProjectInquiryForm = () => {
       // Open WhatsApp in new tab if URL is provided
       if (data?.whatsappUrl) {
         trackWhatsAppClick("project_inquiry_submit");
-        window.open(data.whatsappUrl, '_blank');
+        const newWindow = window.open(
+          data.whatsappUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
+        if (!newWindow) {
+          window.location.href = data.whatsappUrl;
+        }
       }
 
       // Reset form

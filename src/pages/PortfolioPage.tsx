@@ -546,8 +546,17 @@ const PortfolioPage = () => {
                   const whatsappMessage = encodeURIComponent(
                     "Hello, I would like to discuss a project with Gotechpluz."
                   );
+                  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
                   trackWhatsAppClick("portfolio_cta_whatsapp");
-                  window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+                  const newWindow = window.open(
+                    whatsappUrl,
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
+                  if (!newWindow) {
+                    window.location.href = whatsappUrl;
+                  }
                 }}
               >
                 Chat on WhatsApp <Send className="ml-2 h-4 w-4" />

@@ -19,12 +19,18 @@ const Hero = () => {
       "Hi Gotechpluz, I'd like to discuss a project."
     );
 
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
     trackWhatsAppClick("hero_whatsapp_cta");
     toast({
       title: "Opening WhatsApp chat",
       description: "Our team will respond as soon as possible.",
     });
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+
+    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (

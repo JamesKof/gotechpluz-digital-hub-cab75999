@@ -11,12 +11,17 @@ const FloatingWhatsAppButton = () => {
       "Hi Gotechpluz, I'd like quick support about my project."
     );
 
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
     trackWhatsAppClick("floating_whatsapp_button");
     toast({
       title: "Opening WhatsApp support",
       description: "You'll chat directly with our team.",
     });
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (
