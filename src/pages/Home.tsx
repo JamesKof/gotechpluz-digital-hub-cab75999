@@ -26,6 +26,22 @@ const Home = () => {
     }
   ];
 
+  const openWhatsAppFromHome = () => {
+    const whatsappNumber = "233247233996";
+    const whatsappMessage = encodeURIComponent(
+      "Hi Gotechpluz, I'd like to discuss a project."
+    );
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    const newWindow = window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -73,17 +89,25 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/services">
-                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
-                  Explore Services <ArrowRight className="ml-2 h-4 w-4" />
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link to="/services">
+                  <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                    Explore Services <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  type="button"
+                  onClick={openWhatsAppFromHome}
+                >
+                  Chat on WhatsApp
                 </Button>
-              </Link>
-              <Link to="/contact">
-                <Button size="lg" variant="outline">
-                  Get Free Consultation
-                </Button>
-              </Link>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+              </p>
             </div>
           </div>
         </div>

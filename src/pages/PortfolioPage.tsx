@@ -537,40 +537,53 @@ const PortfolioPage = () => {
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join our growing list of satisfied clients who have transformed their businesses with our innovative digital solutions
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-primary hover:opacity-90"
-                onClick={() => {
-                  const whatsappNumber = "233247233996";
-                  const whatsappMessage = encodeURIComponent(
-                    "Hello, I would like to discuss a project with Gotechpluz."
-                  );
-                  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-primary hover:opacity-90"
+                  onClick={() => {
+                    const whatsappNumber = "233247233996";
+                    const whatsappMessage = encodeURIComponent(
+                      "Hello, I would like to discuss a project with Gotechpluz."
+                    );
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-                  trackWhatsAppClick("portfolio_cta_whatsapp");
-                  const newWindow = window.open(
-                    whatsappUrl,
-                    "_blank",
-                    "noopener,noreferrer"
-                  );
-                  if (!newWindow) {
-                    window.location.href = whatsappUrl;
-                  }
-                }}
-              >
-                Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
-              </Button>
-              <Link to="/contact">
-                <Button size="lg" variant="outline">
-                  Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+                    trackWhatsAppClick("portfolio_cta_whatsapp");
+                    const newWindow = window.open(
+                      whatsappUrl,
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                    if (!newWindow) {
+                      window.location.href = whatsappUrl;
+                    }
+                  }}
+                >
+                  Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
-              <Link to="/services">
-                <Button size="lg" variant="outline">
-                  Explore Our Services
+                <Button
+                  size="lg"
+                  variant="outline"
+                  type="button"
+                  onClick={() => {
+                    const element = document.getElementById("project-inquiry");
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  Send Project Brief <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+                <Link to="/services">
+                  <Button size="lg" variant="outline">
+                    Explore Our Services
+                  </Button>
+                </Link>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+              </p>
             </div>
           </div>
         </div>

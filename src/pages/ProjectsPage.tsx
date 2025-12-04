@@ -44,6 +44,22 @@ const ProjectsPage = () => {
     }
   ];
 
+  const openWhatsAppFromProjects = () => {
+    const whatsappNumber = "233247233996";
+    const whatsappMessage = encodeURIComponent(
+      "Hi Gotechpluz, I'd like to discuss a project."
+    );
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    const newWindow = window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -135,17 +151,24 @@ const ProjectsPage = () => {
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Let's collaborate to bring your vision to life. Our team is ready to transform your ideas into reality.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link to="/contact" className="inline-block">
-                  <button className="px-8 py-3 bg-gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                    Get Started
+              <div className="flex flex-col items-center gap-3">
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <button
+                    type="button"
+                    onClick={openWhatsAppFromProjects}
+                    className="px-8 py-3 bg-gradient-primary text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    Chat on WhatsApp
                   </button>
-                </Link>
-                <Link to="/services" className="inline-block">
-                  <button className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-muted transition-colors">
-                    Explore Services
-                  </button>
-                </Link>
+                  <Link to="/services" className="inline-block">
+                    <button className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-muted transition-colors">
+                      Explore Services
+                    </button>
+                  </Link>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+                </p>
               </div>
             </Card>
           </div>

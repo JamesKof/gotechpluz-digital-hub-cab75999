@@ -34,6 +34,22 @@ const AboutPage = () => {
     }
   ];
 
+  const openWhatsAppFromAbout = () => {
+    const whatsappNumber = "233247233996";
+    const whatsappMessage = encodeURIComponent(
+      "Hi Gotechpluz, I'd like to discuss a project."
+    );
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    const newWindow = window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -214,17 +230,25 @@ const AboutPage = () => {
                 <p className="text-lg text-muted-foreground mb-6">
                   Ready to transform your business? Let's have a friendly chat to find out how we can help.
                 </p>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <a href="tel:0247233996">
-                    <Button size="lg" className="bg-gradient-primary hover:opacity-90">
-                      Call: 024 723 3996
+                <div className="flex flex-col items-center gap-3">
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <a href="tel:0247233996">
+                      <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                        Call: 024 723 3996
+                      </Button>
+                    </a>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      type="button"
+                      onClick={openWhatsAppFromAbout}
+                    >
+                      Chat on WhatsApp
                     </Button>
-                  </a>
-                  <Link to="/contact">
-                    <Button size="lg" variant="outline">
-                      Get Free Consultation
-                    </Button>
-                  </Link>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+                  </p>
                 </div>
               </div>
             </div>
