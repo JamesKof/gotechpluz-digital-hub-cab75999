@@ -42,7 +42,8 @@ const Footer = () => {
                       trackWhatsAppClick("footer_whatsapp_link");
                       toast({
                         title: "Opening WhatsApp chat",
-                        description: "You'll be connected to our support team.",
+                        description:
+                          "You'll be connected to our support team. If a new tab doesn't open, please allow popups or call 024 723 3996.",
                       });
                     }}
                     className="hover:text-primary transition-colors"

@@ -24,7 +24,8 @@ const Hero = () => {
     trackWhatsAppClick("hero_whatsapp_cta");
     toast({
       title: "Opening WhatsApp chat",
-      description: "Our team will respond as soon as possible.",
+      description:
+        "Our team will respond as soon as possible. If a new tab doesn't open, please allow popups or call 024 723 3996.",
     });
 
     const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");

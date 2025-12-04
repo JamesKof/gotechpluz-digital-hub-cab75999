@@ -35,7 +35,8 @@ const ProjectInquiryForm = () => {
 
       toast({
         title: "Inquiry Sent Successfully!",
-        description: "We'll get back to you within 24 hours. Check WhatsApp for instant updates.",
+        description:
+          "We'll get back to you within 24 hours. Check WhatsApp for instant updates. If a new tab doesn't open, please allow popups or call 024 723 3996.",
       });
 
       // Open WhatsApp in new tab if URL is provided
