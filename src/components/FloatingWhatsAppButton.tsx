@@ -1,28 +1,15 @@
 import { MessageCircle } from "lucide-react";
-import { trackWhatsAppClick } from "@/lib/analytics";
-import { useToast } from "@/hooks/use-toast";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const FloatingWhatsAppButton = () => {
-  const { toast } = useToast();
+  const { openWhatsApp } = useWhatsApp();
 
   const handleClick = () => {
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I'd like quick support about my project."
-    );
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-    trackWhatsAppClick("floating_whatsapp_button");
-    toast({
-      title: "Opening WhatsApp chat",
-      description:
-        "You'll chat directly with our team. If a new tab doesn't open, please allow popups or call 024 723 3996.",
+    openWhatsApp({
+      source: "floating_whatsapp_button",
+      message: "Hi Gotechpluz, I'd like quick support about my project.",
+      toastTitle: "Opening WhatsApp chat",
     });
-    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
   };
 
   return (

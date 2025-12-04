@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles, Zap, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Home = () => {
   const highlights = [
@@ -26,20 +27,13 @@ const Home = () => {
     }
   ];
 
+  const { openWhatsApp, helperText } = useWhatsApp();
+
   const openWhatsAppFromHome = () => {
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I'd like to discuss a project."
-    );
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-    const newWindow = window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
+    openWhatsApp({
+      source: "home_quick_intro_whatsapp",
+      message: "Hi Gotechpluz, I'd like to discuss a project.",
+    });
   };
 
   return (
@@ -105,9 +99,7 @@ const Home = () => {
                   Chat on WhatsApp
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">
-                WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
-              </p>
+              <p className="text-xs text-muted-foreground">{helperText}</p>
             </div>
           </div>
         </div>

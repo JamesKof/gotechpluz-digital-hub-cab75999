@@ -1,10 +1,10 @@
 import logo from "@/assets/gotechpluz-logo.png";
-import { trackWhatsAppClick } from "@/lib/analytics";
-import { useToast } from "@/hooks/use-toast";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { toast } = useToast();
+  const { openWhatsApp, helperText, callFallback } = useWhatsApp();
+
 
   return (
     <footer className="bg-foreground/5 border-t border-border py-12">
@@ -38,23 +38,22 @@ const Footer = () => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => {
-                      trackWhatsAppClick("footer_whatsapp_link");
-                      toast({
-                        title: "Opening WhatsApp chat",
-                        description:
-                          "You'll be connected to our support team. If a new tab doesn't open, please allow popups or call 024 723 3996.",
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openWhatsApp({
+                        source: "footer_whatsapp_link",
+                        message:
+                          "Hi Gotechpluz, I'd like to inquire about your services.",
+                        toastTitle: "Opening WhatsApp chat",
                       });
                     }}
                     className="hover:text-primary transition-colors"
                   >
                     WhatsApp: +233 247 233 996
                   </a>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
-                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">{helperText}</p>
                 </li>
-                <li>Call: 024 723 3996</li>
+                <li>Call: {callFallback}</li>
                 <li>info@gotechpluz.com</li>
                 <li>La Tebu Cr, Accra-Ghana</li>
               </ul>

@@ -1,10 +1,9 @@
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackWhatsAppClick } from "@/lib/analytics";
-import { useToast } from "@/hooks/use-toast";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Hero = () => {
-  const { toast } = useToast();
+  const { openWhatsApp, helperText } = useWhatsApp();
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -14,24 +13,10 @@ const Hero = () => {
   };
 
   const openWhatsAppChat = () => {
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I'd like to discuss a project."
-    );
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-    trackWhatsAppClick("hero_whatsapp_cta");
-    toast({
-      title: "Opening WhatsApp chat",
-      description:
-        "Our team will respond as soon as possible. If a new tab doesn't open, please allow popups or call 024 723 3996.",
+    openWhatsApp({
+      source: "hero_whatsapp_cta",
+      message: "Hi Gotechpluz, I'd like to discuss a project.",
     });
-
-    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
   };
 
   return (
@@ -112,9 +97,7 @@ const Hero = () => {
               <span>La Tebu Cr, Accra-Ghana</span>
             </div>
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">
-            WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
-          </p>
+          <p className="mt-3 text-xs text-muted-foreground">{helperText}</p>
         </div>
       </div>
       

@@ -1,31 +1,18 @@
 import { MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const WhatsAppContactSection = () => {
-  const { toast } = useToast();
+  const { openWhatsApp, helperText, callFallback } = useWhatsApp();
+
 
   const handleWhatsAppClick = () => {
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
-      "Hi Gotechpluz, I'd like to discuss a project."
-    );
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-    trackWhatsAppClick("whatsapp_landing_section");
-    toast({
-      title: "Opening WhatsApp chat",
-      description:
-        "If a new tab doesn't open, please allow popups or call 024 723 3996.",
+    openWhatsApp({
+      source: "whatsapp_landing_section",
+      message: "Hi Gotechpluz, I'd like to discuss a project.",
+      toastTitle: "Opening WhatsApp chat",
     });
-
-    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
   };
-
   return (
     <section className="pt-32 pb-20 bg-gradient-hero">
       <div className="container mx-auto px-4">

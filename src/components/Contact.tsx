@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Contact = () => {
-  const { toast } = useToast();
+  const { openWhatsApp, helperText, callFallback } = useWhatsApp();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,27 +19,17 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const whatsappNumber = "233247233996";
-    const whatsappMessage = encodeURIComponent(
+    const message =
       `📩 New Contact Message\n\n` +
       `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
       (formData.phone ? `Phone: ${formData.phone}\n` : "") +
-      `Message: ${formData.message}`
-    );
+      `Message: ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-    trackWhatsAppClick("contact_form_submit");
-    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    if (!newWindow) {
-      window.location.href = whatsappUrl;
-    }
-
-    toast({
-      title: "Message Sent!",
-      description:
-        "We've opened a WhatsApp chat so we can respond even faster. If a new tab doesn't open, please allow popups or call 024 723 3996.",
+    openWhatsApp({
+      source: "contact_form_submit",
+      message,
+      toastTitle: "Message Sent!",
     });
 
     setFormData({ name: "", email: "", phone: "", message: "" });
@@ -81,12 +71,13 @@ const Contact = () => {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => {
-                          trackWhatsAppClick("contact_card_link");
-                          toast({
-                            title: "Opening WhatsApp chat",
-                            description:
-                              "You'll be able to talk to us instantly. If a new tab doesn't open, please allow popups or call 024 723 3996.",
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openWhatsApp({
+                            source: "contact_card_link",
+                            message:
+                              "Hi Gotechpluz, I'd like to inquire about your services.",
+                            toastTitle: "Opening WhatsApp chat",
                           });
                         }}
                         className="text-primary hover:underline"
@@ -94,10 +85,8 @@ const Contact = () => {
                         +233 247 233 996 (WhatsApp)
                       </a>
                     </p>
-                    <p className="text-xs text-muted-foreground mb-1">
-                      WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
-                    </p>
-                    <p className="text-muted-foreground text-sm">Call: 024 723 3996</p>
+                    <p className="text-xs text-muted-foreground mb-1">{helperText}</p>
+                    <p className="text-muted-foreground text-sm">Call: {callFallback}</p>
                   </div>
                 </div>
               </Card>
