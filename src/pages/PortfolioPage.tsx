@@ -20,7 +20,9 @@ import {
   Send,
   Sparkles,
   Leaf,
-  Gem
+  Gem,
+  Palette,
+  X
 } from "lucide-react";
 import ProjectInquiryForm from "@/components/ProjectInquiryForm";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
@@ -34,12 +36,43 @@ import hogbetsotsoHero from "@/assets/portfolio-hogbetsotso.jpg";
 import paullyRiceHero from "@/assets/portfolio-paully-rice-real.png";
 import emmaldoHero from "@/assets/portfolio-emmaldo-real.jpg";
 import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
+import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
+import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
+import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isLoading, setIsLoading] = useState(true);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const { openWhatsApp } = useWhatsApp();
+
+  const socialMediaDesigns = [
+    {
+      id: 1,
+      title: "Hogbetsotso 2025 - Hon. Dzifa Gunu",
+      description: "CEO Accra Digital Centres promotional design for the annual Hogbetsotso Festival",
+      image: socialHogbeGunu,
+      client: "Hogbetsotso Festival",
+      category: "Event Promotion"
+    },
+    {
+      id: 2,
+      title: "Hogbetsotso 2025 - H.E. John Mahama",
+      description: "Special Guest of Honour announcement for the President of the Republic of Ghana",
+      image: socialHogbePresident,
+      client: "Hogbetsotso Festival",
+      category: "Event Promotion"
+    },
+    {
+      id: 3,
+      title: "Mini Hogbe 2025 - Premium Invitation",
+      description: "Elegant digital invitation design for the Mini Hogbe celebration in Mafi Adidome",
+      image: socialHogbeInvitation,
+      client: "Anlo Dukor Council",
+      category: "Digital Invitation"
+    }
+  ];
 
   useEffect(() => {
     // Simulate loading for images and content
@@ -447,15 +480,23 @@ const PortfolioPage = () => {
               <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                 <Card className="overflow-hidden border-border hover:border-primary/30 transition-all duration-300">
-                  {/* Hero Image */}
+                  {/* Hero Image with Zoom Effect */}
                   {study.heroImage && (
-                    <div className="relative h-80 overflow-hidden group">
+                    <div 
+                      className="relative h-80 overflow-hidden group cursor-zoom-in"
+                      onClick={() => setLightboxImage(study.heroImage)}
+                    >
                       <img 
                         src={study.heroImage} 
                         alt={study.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
+                        <span className="text-white bg-background/80 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                          Click to zoom
+                        </span>
+                      </div>
                     </div>
                   )}
                   
@@ -580,6 +621,56 @@ const PortfolioPage = () => {
       })
       )}
 
+      {/* Social Media Designs Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
+                <Palette className="h-4 w-4 text-accent" />
+                <span className="text-accent font-semibold text-sm">Creative Design</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Social Media <span className="bg-gradient-accent bg-clip-text text-transparent">Designs</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Eye-catching promotional graphics and digital invitations that drive engagement and tell compelling stories
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {socialMediaDesigns.map((design, index) => (
+                <Card 
+                  key={design.id}
+                  className="overflow-hidden border-border hover:border-accent/50 transition-all duration-300 group cursor-zoom-in animate-fade-in"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                  onClick={() => setLightboxImage(design.image)}
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <img 
+                      src={design.image} 
+                      alt={design.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-white bg-background/80 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                        Click to expand
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <Badge className="bg-accent/90 text-accent-foreground mb-2">{design.category}</Badge>
+                      <h3 className="text-lg font-bold text-white mb-1">{design.title}</h3>
+                      <p className="text-sm text-white/80">{design.client}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Additional Projects Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -694,6 +785,27 @@ const PortfolioPage = () => {
       </section>
 
       <Footer />
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
+            onClick={() => setLightboxImage(null)}
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <img 
+            src={lightboxImage} 
+            alt="Expanded view"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-large animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };
