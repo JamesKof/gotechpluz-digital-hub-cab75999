@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, Eye, Globe2, Shield, Lightbulb, Users, Heart, TrendingUp } from "lucide-react";
+import { Target, Eye, Globe2, Shield, Lightbulb, Users, Heart, TrendingUp, Building2, Stethoscope, Truck, ShoppingBag, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
@@ -61,8 +61,11 @@ const AboutPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               About <span className="bg-gradient-primary bg-clip-text text-transparent">Gotechpluz</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Empowering brands through innovative digital solutions and transformative technology
+            <p className="text-xl text-muted-foreground mb-6">
+              Ghana's Premier Digital Marketing Agency & Software Development Company
+            </p>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              For over five years, we've been the <strong>trusted IT solutions partner</strong> for government institutions, healthcare organizations, NGOs, and growing businesses across Ghana and beyond. Our journey is defined by the transformative digital experiences we've created for our clients.
             </p>
           </div>
         </div>
@@ -145,6 +148,101 @@ const AboutPage = () => {
                   </Card>
                 );
               })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve - Storytelling Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Industries We <span className="bg-gradient-accent bg-clip-text text-transparent">Transform</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                From <strong>web design for government institutions in Ghana</strong> to <strong>digital marketing for SMEs</strong>, 
+                we bring specialized expertise to every sector we serve
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <Card className="p-8 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 animate-fade-in-up">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Building2 className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      Government & Public Sector
+                    </h3>
+                    <p className="text-muted-foreground mb-3">
+                      <strong>Web development for government institutions in Ghana</strong> requires security, reliability, and citizen-centric design. We've built platforms that serve millions, including secure immigration systems and public service portals.
+                    </p>
+                    <p className="text-sm text-primary font-medium">Trusted by: Ghana Immigration Service, Hogbetsotso Festival</p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-8 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-gradient-accent rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Stethoscope className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      Healthcare & NGOs
+                    </h3>
+                    <p className="text-muted-foreground mb-3">
+                      <strong>Website development for NGOs in Ghana</strong> and <strong>web development for healthcare institutions</strong> demands empathy-driven UX. Our health platforms connect communities to care with intuitive, accessible interfaces.
+                    </p>
+                    <p className="text-sm text-primary font-medium">Featured: Health Connect Platform, Viva Health Foundation</p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-8 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-primary">
+                    <Truck className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      Logistics & Trade
+                    </h3>
+                    <p className="text-muted-foreground mb-3">
+                      <strong>IT solutions for logistics companies in Ghana</strong> power seamless operations. From transit management systems to trade platforms, we build software that moves goods and grows businesses efficiently.
+                    </p>
+                    <p className="text-sm text-primary font-medium">Solutions: Transit Gateway, Ghana Exim Platform</p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-8 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                    <ShoppingBag className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      SMEs & Startups
+                    </h3>
+                    <p className="text-muted-foreground mb-3">
+                      <strong>Branding services for startups in Ghana</strong> and <strong>digital marketing for SMEs</strong> require agility and impact. We've helped local businesses become household names through strategic digital presence and growth-focused marketing.
+                    </p>
+                    <p className="text-sm text-primary font-medium">Success Stories: Emmaldo, Paully Rice, Sesi-Edem Gold</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="text-center">
+              <Link to="/portfolio">
+                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                  View Our Portfolio <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

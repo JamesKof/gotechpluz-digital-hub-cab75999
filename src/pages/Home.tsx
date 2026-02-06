@@ -57,28 +57,38 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Quick Intro Section */}
+      {/* Our Story - SEO-Rich Intro */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Digital Solutions That <span className="bg-gradient-primary bg-clip-text text-transparent">Transform</span> Your Business
-            </h2>
-            <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
-              We reimagine traditional business processes and simplify complex operations through innovative digital solutions. Our goal-oriented approach helps businesses worldwide access new markets,
-              increase operational efficiency, and dramatically accelerate revenue growth.
-            </p>
+          <div className="max-w-5xl mx-auto animate-fade-in">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                The Story Behind Ghana's Most <span className="bg-gradient-primary bg-clip-text text-transparent">Trusted Digital Agency</span>
+              </h2>
+            </div>
+            
+            <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 mb-12">
+              <p className="text-lg leading-relaxed">
+                It started with a simple question: <em>"Why should Ghanaian businesses settle for less when they deserve world-class digital solutions?"</em> That question became Gotechpluz—a <strong>leading digital marketing agency in Ghana</strong> that has since transformed how businesses across Africa and beyond approach technology.
+              </p>
+              <p className="text-lg leading-relaxed">
+                Today, we're the <strong>web development company in Ghana</strong> that government institutions trust for secure platforms, the <strong>branding agency</strong> that startups choose to establish their identity, and the <strong>IT solutions company</strong> that enterprises rely on to streamline operations. From building <strong>e-commerce websites for businesses in Accra</strong> to crafting <strong>digital marketing strategies for SMEs in Ghana</strong>, we've proven that excellence knows no boundaries.
+              </p>
+              <p className="text-lg leading-relaxed">
+                Our portfolio tells the story: secure immigration systems for government institutions, health platforms connecting communities to care, logistics solutions moving goods across borders, and brand identities that have become household names. Whether you need <strong>affordable web design services in Accra</strong>, <strong>SEO services in Ghana</strong>, or <strong>custom software development</strong>, we deliver results that speak for themselves.
+              </p>
+            </div>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors text-center">
                 <div className="text-4xl font-bold text-primary mb-2">$2M+</div>
                 <p className="text-muted-foreground">Client Revenue Generated</p>
               </div>
-              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors text-center">
                 <div className="text-4xl font-bold text-primary mb-2">300%</div>
                 <p className="text-muted-foreground">Average ROI Uplift</p>
               </div>
-              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors">
+              <div className="p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-colors text-center">
                 <div className="text-4xl font-bold text-primary mb-2">5+</div>
                 <p className="text-muted-foreground">Years of Excellence</p>
               </div>

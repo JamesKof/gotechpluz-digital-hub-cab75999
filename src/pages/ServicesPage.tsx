@@ -20,50 +20,50 @@ const ServicesPage = () => {
     {
       icon: Code,
       title: "Web Development",
-      description: "Custom website and web application development with cutting-edge technologies",
-      features: ["Responsive Design", "CMS Integration", "Custom Web Apps", "Frontend & Backend Development"]
+      description: "Professional website design and custom web application development for businesses in Ghana and beyond",
+      features: ["Business Website Development", "Corporate Website Design", "Custom Web Applications", "Responsive Design"]
     },
     {
       icon: Smartphone,
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications for iOS and Android",
-      features: ["iOS Development", "Android Development", "React Native", "Flutter Apps"]
+      description: "Native and cross-platform mobile applications for iOS and Android that engage users",
+      features: ["iOS App Development", "Android Development", "React Native Apps", "Cross-Platform Solutions"]
     },
     {
       icon: ShoppingCart,
       title: "E-commerce Solutions",
-      description: "Comprehensive online shopping platforms with secure payment integration",
-      features: ["Shopping Cart Systems", "Payment Gateway Integration", "Inventory Management", "Order Tracking"]
+      description: "E-commerce website development in Ghana with secure payment integration and inventory management",
+      features: ["Online Store Development", "Payment Gateway Integration", "Inventory Management", "Order Tracking Systems"]
     },
     {
       icon: Palette,
-      title: "Graphic Design",
-      description: "Professional visual identity and branding solutions that make your brand stand out",
-      features: ["Logo Design", "Brand Identity", "Print Design", "Marketing Materials"]
+      title: "Graphic Design & Branding",
+      description: "Professional branding agency services in Ghana—from logo design to complete brand identity systems",
+      features: ["Logo Design", "Brand Identity Design", "Marketing Materials", "Print & Digital Graphics"]
     },
     {
       icon: Megaphone,
       title: "Digital Marketing",
-      description: "Comprehensive digital marketing strategies to amplify your online presence",
-      features: ["Social Media Marketing", "Content Strategy", "Email Campaigns", "Brand Management"]
+      description: "Comprehensive digital marketing services in Ghana to amplify your online presence and drive conversions",
+      features: ["Social Media Marketing", "Content Marketing Strategy", "Email Campaign Management", "Brand Management"]
     },
     {
       icon: Search,
       title: "SEO & SEM",
-      description: "Search engine optimization and marketing to boost your visibility",
-      features: ["On-page SEO", "Off-page SEO", "Google Ads", "Analytics & Reporting"]
+      description: "SEO services in Ghana and Google Ads management to boost your visibility in search results",
+      features: ["On-page SEO Optimization", "Off-page SEO Strategy", "Google Ads Management", "Analytics & Reporting"]
     },
     {
       icon: Video,
       title: "Media Production",
-      description: "High-quality video production, animation, and live streaming services",
-      features: ["Video Production", "Motion Graphics", "Animation", "Live Streaming"]
+      description: "High-quality video production, motion graphics, and live streaming services for brands",
+      features: ["Video Production", "Motion Graphics", "Animation", "Live Event Streaming"]
     },
     {
       icon: BarChart3,
       title: "IT Consultancy",
-      description: "Custom software solutions and management systems tailored to your business",
-      features: ["ERP Systems", "CRM Solutions", "POS Systems", "Custom Software"]
+      description: "Business IT solutions in Ghana—custom software, ERP systems, POS, and management solutions",
+      features: ["ERP Systems", "CRM Solutions", "POS Systems", "Custom Software Development"]
     }
   ];
 
@@ -99,12 +99,12 @@ const ServicesPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Digital Solutions That <span className="bg-gradient-primary bg-clip-text text-transparent">Drive Growth</span>
             </h1>
-          <p className="text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
-            From websites and mobile apps to branding and marketing—we offer comprehensive digital solutions that reimagine traditional business processes and simplify operations for lasting success.
-          </p>
-          <p className="text-lg text-muted-foreground/80">
-            Yes—we handle it end-to-end. We're the strategic partners connecting the dots between technology, marketing, and creativity to help you grow revenue consistently and improve business operations.
-          </p>
+            <p className="text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
+              From <strong>website design services in Ghana</strong> to <strong>digital marketing</strong> and <strong>IT consultancy</strong>—we offer end-to-end solutions that transform businesses.
+            </p>
+            <p className="text-lg text-muted-foreground/80">
+              As a <strong>leading web development company in Accra</strong>, we connect technology, marketing, and creativity. Whether you need <strong>affordable web design in Ghana</strong>, <strong>SEO services</strong>, or <strong>custom software development</strong>, our team delivers excellence at every touchpoint.
+            </p>
           </div>
         </div>
       </section>
