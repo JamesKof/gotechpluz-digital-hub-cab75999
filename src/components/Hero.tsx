@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const Hero = () => {
-  const { openWhatsApp, helperText } = useWhatsApp();
+  const { openWhatsApp } = useWhatsApp();
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -97,7 +97,6 @@ const Hero = () => {
               <span>La Tebu Cr, Accra-Ghana</span>
             </div>
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">{helperText}</p>
         </div>
       </div>
       

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const WhatsAppContactSection = () => {
-  const { openWhatsApp, helperText, callFallback } = useWhatsApp();
+  const { openWhatsApp, callFallback } = useWhatsApp();
 
 
   const handleWhatsAppClick = () => {
@@ -39,12 +39,7 @@ const WhatsAppContactSection = () => {
             </Button>
             <p className="text-sm text-muted-foreground flex items-center gap-2">
               <Phone className="h-4 w-4 text-primary" />
-              <span>
-                Or call <span className="font-semibold">024 723 3996</span> for immediate assistance.
-              </span>
-            </p>
-            <p className="text-xs text-muted-foreground">
-              WhatsApp opens in a new tab. If nothing happens, please allow popups and try again.
+              <span>Or call <span className="font-semibold">024 723 3996</span> for immediate assistance.</span>
             </p>
           </div>
         </div>
