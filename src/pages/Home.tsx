@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
-import { ArrowRight, Sparkles, Zap, TrendingUp } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, TrendingUp, Globe, Users, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -100,6 +100,145 @@ const Home = () => {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground">{helperText}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Reach Section */}
+      <section className="py-20 bg-background relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+                <Globe className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Global Digital Agency</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                One Agency. <span className="bg-gradient-primary bg-clip-text text-transparent">Worldwide Impact.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                As one of Ghana's leading web development, application development, and graphic design agencies, 
+                we've shattered geographic boundaries to serve clients across continents. Our distributed team 
+                and digital-first approach mean excellence isn't limited by location—it's amplified by it.
+              </p>
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+              <Card className="p-6 text-center bg-gradient-to-br from-background to-muted/30 border-border hover:border-primary/30 transition-colors animate-fade-in-up">
+                <Globe className="h-8 w-8 mx-auto mb-3 text-primary" />
+                <div className="text-3xl font-bold text-primary mb-1">10+</div>
+                <p className="text-sm text-muted-foreground">Countries Served</p>
+              </Card>
+              <Card className="p-6 text-center bg-gradient-to-br from-background to-muted/30 border-border hover:border-primary/30 transition-colors animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+                <Users className="h-8 w-8 mx-auto mb-3 text-accent" />
+                <div className="text-3xl font-bold text-accent mb-1">Global</div>
+                <p className="text-sm text-muted-foreground">Distributed Team</p>
+              </Card>
+              <Card className="p-6 text-center bg-gradient-to-br from-background to-muted/30 border-border hover:border-primary/30 transition-colors animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                <MapPin className="h-8 w-8 mx-auto mb-3 text-primary" />
+                <div className="text-3xl font-bold text-primary mb-1">24/7</div>
+                <p className="text-sm text-muted-foreground">Time Zone Coverage</p>
+              </Card>
+              <Card className="p-6 text-center bg-gradient-to-br from-background to-muted/30 border-border hover:border-primary/30 transition-colors animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+                <Zap className="h-8 w-8 mx-auto mb-3 text-accent" />
+                <div className="text-3xl font-bold text-accent mb-1">100%</div>
+                <p className="text-sm text-muted-foreground">Remote-Ready</p>
+              </Card>
+            </div>
+
+            {/* Countries Grid */}
+            <div className="mb-12">
+              <h3 className="text-center text-lg font-semibold mb-8 text-muted-foreground">
+                Trusted by Clients in
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                {[
+                  { name: "Ghana", flag: "🇬🇭", highlight: true },
+                  { name: "USA", flag: "🇺🇸" },
+                  { name: "UK", flag: "🇬🇧" },
+                  { name: "Germany", flag: "🇩🇪" },
+                  { name: "Canada", flag: "🇨🇦" },
+                  { name: "France", flag: "🇫🇷" },
+                  { name: "Netherlands", flag: "🇳🇱" },
+                  { name: "Nigeria", flag: "🇳🇬" },
+                  { name: "Rwanda", flag: "🇷🇼" },
+                  { name: "Brazil", flag: "🇧🇷" },
+                ].map((country, index) => (
+                  <div
+                    key={country.name}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 hover:scale-105 animate-fade-in ${
+                      country.highlight 
+                        ? "bg-primary/10 border-primary/30 text-primary font-semibold" 
+                        : "bg-muted/50 border-border hover:border-primary/30"
+                    }`}
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <span className="text-xl">{country.flag}</span>
+                    <span className="text-sm font-medium">{country.name}</span>
+                  </div>
+                ))}
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-primary text-white font-semibold animate-fade-in" style={{ animationDelay: "0.5s" }}>
+                  <span className="text-xl">🌍</span>
+                  <span className="text-sm">& Beyond</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Value Proposition */}
+            <Card className="p-8 md:p-10 bg-gradient-to-br from-muted/30 to-background border-primary/10 animate-fade-in">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">
+                    Beyond Borders. Beyond Barriers.
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    Physical distance is no longer a limitation. Our digital-first infrastructure 
+                    enables seamless collaboration across time zones, ensuring your project receives 
+                    the same dedication and expertise whether you're in Accra, New York, or Berlin.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    With team members strategically positioned around the globe, we offer round-the-clock 
+                    support, faster turnaround times, and a diverse perspective that enriches every project we undertake.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 bg-background rounded-xl border border-border">
+                    <div className="text-primary font-bold mb-1">Seamless Communication</div>
+                    <p className="text-xs text-muted-foreground">Video calls, real-time updates, and transparent workflows</p>
+                  </div>
+                  <div className="p-4 bg-background rounded-xl border border-border">
+                    <div className="text-primary font-bold mb-1">Cultural Intelligence</div>
+                    <p className="text-xs text-muted-foreground">Local insights with global design standards</p>
+                  </div>
+                  <div className="p-4 bg-background rounded-xl border border-border">
+                    <div className="text-primary font-bold mb-1">Agile Delivery</div>
+                    <p className="text-xs text-muted-foreground">Sprint-based development for faster results</p>
+                  </div>
+                  <div className="p-4 bg-background rounded-xl border border-border">
+                    <div className="text-primary font-bold mb-1">Competitive Pricing</div>
+                    <p className="text-xs text-muted-foreground">World-class quality at accessible rates</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* CTA */}
+            <div className="text-center mt-12">
+              <p className="text-muted-foreground mb-4">Ready to work with a truly global agency?</p>
+              <Link to="/contact">
+                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                  Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
