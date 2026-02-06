@@ -13,6 +13,7 @@ import PortfolioPage from "./pages/PortfolioPage";
 import NotFound from "./pages/NotFound";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
+import MobileContactBar from "./components/MobileContactBar";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
       <BrowserRouter>
         <AnalyticsListener />
         <FloatingWhatsAppButton />
+        <MobileContactBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />

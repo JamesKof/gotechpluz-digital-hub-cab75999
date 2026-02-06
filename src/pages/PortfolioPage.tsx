@@ -17,7 +17,10 @@ import {
   ShoppingCart,
   Heart,
   Building2,
-  Send
+  Send,
+  Sparkles,
+  Leaf,
+  Gem
 } from "lucide-react";
 import ProjectInquiryForm from "@/components/ProjectInquiryForm";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
@@ -27,11 +30,16 @@ import transitGatewayHero from "@/assets/portfolio-transit-gateway.jpg";
 import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
 import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
 import prudentialHero from "@/assets/portfolio-prudential.jpg";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import hogbetsotsoHero from "@/assets/portfolio-hogbetsotso.jpg";
+import paullyRiceHero from "@/assets/portfolio-paully-rice.jpg";
+import emmaldoHero from "@/assets/portfolio-emmaldo.jpg";
+import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isLoading, setIsLoading] = useState(true);
+  const { openWhatsApp } = useWhatsApp();
 
   useEffect(() => {
     // Simulate loading for images and content
@@ -50,7 +58,9 @@ const PortfolioPage = () => {
     "Healthcare",
     "Finance",
     "E-commerce",
-    "Branding"
+    "Branding",
+    "Agribusiness",
+    "Cultural Events"
   ];
 
   const caseStudies = [
@@ -209,6 +219,110 @@ const PortfolioPage = () => {
       },
       icon: Building2,
       color: "from-red-600 to-red-500"
+    },
+    {
+      id: 7,
+      title: "Hogbetsotso Festival – Anlo Dukor Rebrand",
+      client: "Hogbetsotso Festival Committee",
+      category: "Cultural Branding",
+      tags: ["Branding", "Cultural Events", "Web Development"],
+      link: "https://anlodukor.org/",
+      description: "Complete cultural branding and digital promotion for the Hogbetsotso Festival, Ghana's largest Ewe celebration. The project includes heritage storytelling, event promotion, and the Anlo Dukor platform for AirBnB services and event ticketing.",
+      challenge: "The Hogbetsotso Festival needed a modern digital presence to preserve cultural heritage while attracting global audiences, manage event ticketing, and facilitate tourism through accommodation bookings.",
+      solution: "We delivered comprehensive cultural branding with a heritage-focused website featuring event ticketing, AirBnB-style accommodation services, digital storytelling, and social media engagement strategies that honor tradition while embracing modernity.",
+      results: [
+        { metric: "500%", label: "Social media engagement increase" },
+        { metric: "10K+", label: "Festival attendees reached" },
+        { metric: "200+", label: "Accommodation bookings" },
+        { metric: "50+", label: "Cultural stories shared" }
+      ],
+      technologies: ["Web Development", "Event Ticketing", "AirBnB Integration", "Social Media", "Cultural Branding"],
+      heroImage: hogbetsotsoHero,
+      testimonial: {
+        quote: "Gotechpluz captured the essence of our heritage and brought it to the digital world. The Anlo Dukor platform has helped us share our culture with the world while generating sustainable tourism revenue.",
+        author: "Festival Committee Chair",
+        company: "Hogbetsotso Festival"
+      },
+      icon: Sparkles,
+      color: "from-orange-600 to-green-600"
+    },
+    {
+      id: 8,
+      title: "Paully Rice – Agribusiness Brand Development",
+      client: "Paully Rice / Ebenut Ghana Ltd",
+      category: "Agribusiness Branding",
+      tags: ["Branding", "Agribusiness"],
+      link: "",
+      description: "Complete agribusiness branding and packaging design for Paully Rice, a premium jasmine rice brand. The project included brand identity, product packaging, website development, and market visibility strategy.",
+      challenge: "Paully Rice needed to establish a premium brand identity in Ghana's competitive rice market, differentiate from imports, and build consumer trust through professional packaging and digital presence.",
+      solution: "We created a comprehensive brand identity including FDA-compliant packaging design, logo development, brand guidelines, digital storytelling campaigns, and market positioning strategy that emphasizes quality and Ghanaian origin.",
+      results: [
+        { metric: "300%", label: "Brand recognition growth" },
+        { metric: "40+", label: "Retail partnerships" },
+        { metric: "95%", label: "Packaging approval rate" },
+        { metric: "FDA", label: "Certified compliant" }
+      ],
+      technologies: ["Brand Identity", "Packaging Design", "Adobe Creative Suite", "Digital Marketing", "Business Strategy"],
+      heroImage: paullyRiceHero,
+      testimonial: {
+        quote: "The branding transformation has been remarkable. Our premium packaging now stands out on shelves, and customers trust our product quality. Gotechpluz understood exactly what we needed to compete.",
+        author: "Managing Director",
+        company: "Ebenut Ghana Ltd"
+      },
+      icon: Leaf,
+      color: "from-green-600 to-yellow-500"
+    },
+    {
+      id: 9,
+      title: "Emmaldo Ghana Limited – Corporate Identity",
+      client: "Emmaldo Ghana Limited",
+      category: "Corporate Branding",
+      tags: ["Branding", "Web Development"],
+      link: "https://emmaldo.com/",
+      description: "Complete corporate branding and digital identity for Emmaldo Ghana Limited, a leading glazing and construction solutions company specializing in aluminium installations, glass partitions, and architectural solutions.",
+      challenge: "Emmaldo needed a professional corporate identity that reflects their expertise in glazing solutions, builds trust with corporate clients, and drives business growth through strategic marketing.",
+      solution: "We developed comprehensive corporate branding including website development, billboard advertising campaigns, corporate identity materials, and digital marketing strategies that positioned them as industry leaders.",
+      results: [
+        { metric: "100%", label: "Annual turnover increase" },
+        { metric: "50+", label: "Corporate projects won" },
+        { metric: "300%", label: "Billboard campaign reach" },
+        { metric: "4.8/5", label: "Client satisfaction" }
+      ],
+      technologies: ["Corporate Branding", "Website Development", "Billboard Marketing", "Digital Identity", "B2B Marketing"],
+      heroImage: emmaldoHero,
+      testimonial: {
+        quote: "The billboard campaign and website redesign transformed our business. We've seen our annual turnover double, and corporate clients now approach us first for major glazing projects. Outstanding ROI.",
+        author: "CEO",
+        company: "Emmaldo Ghana Limited"
+      },
+      icon: Building2,
+      color: "from-purple-600 to-blue-600"
+    },
+    {
+      id: 10,
+      title: "Sesi-Edem Gold Dealership – Premium Brand Identity",
+      client: "Sesi-Edem Gold Dealership",
+      category: "Luxury Branding",
+      tags: ["Branding", "Finance"],
+      link: "https://www.sesi-edem.com/",
+      description: "High-trust business branding and digital positioning for Sesi-Edem Gold Dealership, establishing corporate credibility and premium positioning in Ghana's gold trading sector.",
+      challenge: "Operating in a sensitive sector requiring exceptional trust and credibility, Sesi-Edem needed a sophisticated brand identity that communicates security, integrity, and premium service to discerning clients.",
+      solution: "We crafted a luxury brand identity with elegant visual design, professional website development, trust-building content strategy, and digital positioning that establishes them as a credible, premium gold dealership.",
+      results: [
+        { metric: "400%", label: "Client trust improvement" },
+        { metric: "150%", label: "High-value client growth" },
+        { metric: "Premium", label: "Market positioning achieved" },
+        { metric: "100%", label: "Regulatory compliance" }
+      ],
+      technologies: ["Luxury Branding", "Trust Building", "Website Development", "Corporate Identity", "Digital Positioning"],
+      heroImage: sesiEdemHero,
+      testimonial: {
+        quote: "In our industry, trust is everything. Gotechpluz created a brand that immediately communicates credibility and premium service. Our high-value client base has grown significantly.",
+        author: "Principal Partner",
+        company: "Sesi-Edem Gold Dealership"
+      },
+      icon: Gem,
+      color: "from-yellow-600 to-amber-700"
     }
   ];
 
@@ -543,21 +657,11 @@ const PortfolioPage = () => {
                   size="lg"
                   className="bg-gradient-primary hover:opacity-90"
                   onClick={() => {
-                    const whatsappNumber = "233247233996";
-                    const whatsappMessage = encodeURIComponent(
-                      "Hello, I would like to discuss a project with Gotechpluz."
-                    );
-                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-                    trackWhatsAppClick("portfolio_cta_whatsapp");
-                    const newWindow = window.open(
-                      whatsappUrl,
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                    if (!newWindow) {
-                      window.location.href = whatsappUrl;
-                    }
+                    openWhatsApp({
+                      source: "portfolio_cta",
+                      message: "Hello, I would like to discuss a project with Gotechpluz.",
+                      toastTitle: "Opening WhatsApp",
+                    });
                   }}
                 >
                   Chat on WhatsApp <Send className="ml-2 h-4 w-4" />
