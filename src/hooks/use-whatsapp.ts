@@ -15,6 +15,22 @@ const buildWhatsAppUrl = (message: string) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 };
 
+/**
+ * Centralized WhatsApp interaction hook.
+ * Provides device-sensitive behavior (mobile app vs WhatsApp Web),
+ * toast notifications with call fallback, and analytics tracking.
+ *
+ * Analytics event sources (use descriptive, consistent names):
+ * - hero_cta: Main hero section button
+ * - nav_get_started: Navigation "Get Started" button
+ * - floating_button: Floating WhatsApp button
+ * - footer_cta: Footer contact button
+ * - contact_section: Homepage contact card
+ * - portfolio_cta: Portfolio page CTA
+ * - project_inquiry_form: After form submission
+ * - mobile_contact_bar: Fixed mobile bottom bar
+ * - whatsapp_landing: WhatsApp landing section (ContactPage)
+ */
 export const useWhatsApp = () => {
   const { toast } = useToast();
 
