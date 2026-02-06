@@ -9,7 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import PortfolioPage from "./pages/PortfolioPage";
-
+import ProcessPage from "./pages/ProcessPage";
 import NotFound from "./pages/NotFound";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
@@ -45,6 +45,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/process" element={<ProcessPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           
