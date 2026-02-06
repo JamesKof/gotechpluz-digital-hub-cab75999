@@ -31,8 +31,8 @@ import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
 import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
 import prudentialHero from "@/assets/portfolio-prudential.jpg";
 import hogbetsotsoHero from "@/assets/portfolio-hogbetsotso.jpg";
-import paullyRiceHero from "@/assets/portfolio-paully-rice.jpg";
-import emmaldoHero from "@/assets/portfolio-emmaldo.jpg";
+import paullyRiceHero from "@/assets/portfolio-paully-rice-real.png";
+import emmaldoHero from "@/assets/portfolio-emmaldo-real.jpg";
 import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
