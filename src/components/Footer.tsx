@@ -1,5 +1,8 @@
 import logo from "@/assets/gotechpluz-logo.png";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { ClipboardList, ExternalLink } from "lucide-react";
+
+const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,10 +24,22 @@ const Footer = () => {
             <div>
               <h3 className="font-bold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
-                <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a></li>
-                <li><a href="#team" className="text-muted-foreground hover:text-primary transition-colors">Team</a></li>
-                <li><a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</a></li>
+                <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
+                <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</a></li>
+                <li><a href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</a></li>
+                <li><a href="/process" className="text-muted-foreground hover:text-primary transition-colors">How We Work</a></li>
+                <li>
+                  <a 
+                    href={QUESTIONNAIRE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
+                  >
+                    <ClipboardList className="h-3 w-3" />
+                    Website Questionnaire
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </li>
               </ul>
             </div>
 
