@@ -1,9 +1,21 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Code, Megaphone, Palette, ShoppingCart, Smartphone, Video, Search, BarChart3, Globe, Layers, LineChart, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Code, Megaphone, Palette, ShoppingCart, Smartphone, Video, Search, BarChart3, Globe, Layers, LineChart, Sparkles, ClipboardList, ExternalLink, ArrowRight } from "lucide-react";
+import { useWhatsApp } from "@/hooks/use-whatsapp";
+
+const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
 const ServicesPage = () => {
+  const { openWhatsApp } = useWhatsApp();
+  
+  const openWhatsAppFromServices = () => {
+    openWhatsApp({
+      source: "services_cta",
+      message: "Hi Gotechpluz, I'm interested in your services and would like to discuss a project.",
+    });
+  };
   const services = [
     {
       icon: Code,
@@ -209,6 +221,46 @@ const ServicesPage = () => {
                 </p>
               </div>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with Questionnaire */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to <span className="bg-gradient-primary bg-clip-text text-transparent">Get Started</span>?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Complete our Website Development Questionnaire for a comprehensive project assessment and custom quote.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 justify-center mb-8">
+              <a
+                href={QUESTIONNAIRE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                  <ClipboardList className="h-5 w-5 mr-2" />
+                  Start Questionnaire
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </Button>
+              </a>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={openWhatsAppFromServices}
+              >
+                Chat on WhatsApp
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </div>
+            
+            <p className="text-sm text-muted-foreground">
+              Or scroll down to chat with us on WhatsApp for quick inquiries
+            </p>
           </div>
         </div>
       </section>

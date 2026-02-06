@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ClipboardList, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/gotechpluz-logo.png";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+
+const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +53,15 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={QUESTIONNAIRE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/80 hover:text-primary transition-colors font-medium flex items-center gap-1"
+            >
+              <ClipboardList className="h-4 w-4" />
+              Questionnaire
+            </a>
             <Button
               type="button"
               className="bg-gradient-primary hover:opacity-90 transition-opacity"
@@ -88,6 +99,17 @@ const Navigation = () => {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href={QUESTIONNAIRE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 px-2 py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
+              >
+                <ClipboardList className="h-4 w-4" />
+                Website Questionnaire
+                <ExternalLink className="h-3 w-3" />
+              </a>
               <Button
                 type="button"
                 className="bg-gradient-primary hover:opacity-90 transition-opacity w-full"
