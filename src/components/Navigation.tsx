@@ -8,7 +8,7 @@ import { useWhatsApp } from "@/hooks/use-whatsapp";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { openWhatsApp, helperText } = useWhatsApp();
+  const { openWhatsApp } = useWhatsApp();
   const openWhatsAppFromNav = () => {
     openWhatsApp({
       source: "nav_get_started",
