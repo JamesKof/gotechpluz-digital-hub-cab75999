@@ -207,7 +207,7 @@ const PortfolioPage = () => {
       client: "Viva Health Medical Foundation",
       category: "Non-Profit Healthcare",
       tags: ["Web Development", "Mobile Apps", "Healthcare"],
-      link: "https://vivahealth.vercel.app/",
+      link: "https://www.vivahealthmedfoundation.org/",
       description: "Non-profit healthcare organization platform empowering lives through medical outreach, free screenings, and accessible health education for underserved communities.",
       challenge: "Viva Health needed a digital platform to showcase programs, accept donations, recruit volunteers, share impact stories, and manage community health initiatives efficiently.",
       solution: "We developed a comprehensive non-profit platform with donation integration, volunteer management, program showcases, blog features, gallery, and mobile-optimized design.",
