@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import ProjectInquiryForm from "@/components/ProjectInquiryForm";
-import { ArrowRight, Sparkles, Zap, TrendingUp, Globe, Users, MapPin, Rocket } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, TrendingUp, Globe, Users, MapPin, Rocket, ClipboardList, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -304,8 +304,8 @@ const Home = () => {
                   Ready to <span className="bg-gradient-primary bg-clip-text text-transparent">Transform</span> Your Digital Presence?
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Take the first step towards digital excellence. Fill out the form and our team will 
-                  get back to you within 24 hours with a tailored proposal for your project.
+                  Take the first step towards digital excellence. Fill out the quick form for general inquiries, 
+                  or complete our detailed questionnaire for website projects.
                 </p>
 
                 <div className="space-y-6">
@@ -338,7 +338,30 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-background rounded-xl border border-border">
+                {/* Website Development Questionnaire CTA */}
+                <div className="mt-8 p-6 bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl border border-primary/20">
+                  <div className="flex items-center gap-3 mb-3">
+                    <ClipboardList className="h-5 w-5 text-primary" />
+                    <h4 className="font-semibold">Need a Website?</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Complete our detailed Website Development Questionnaire for a comprehensive project assessment and custom quote.
+                  </p>
+                  <a
+                    href="https://forms.gle/YVXpRizgtv7GLcYs5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full sm:w-auto bg-gradient-primary hover:opacity-90">
+                      <ClipboardList className="h-4 w-4 mr-2" />
+                      Start Questionnaire
+                      <ExternalLink className="h-3 w-3 ml-2" />
+                    </Button>
+                  </a>
+                </div>
+
+                {/* WhatsApp Option */}
+                <div className="mt-4 p-6 bg-background rounded-xl border border-border">
                   <p className="text-sm text-muted-foreground mb-2">Prefer to chat directly?</p>
                   <Button
                     variant="outline"
