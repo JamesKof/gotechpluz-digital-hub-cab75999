@@ -232,11 +232,15 @@ const Home = () => {
             {/* CTA */}
             <div className="text-center mt-12">
               <p className="text-muted-foreground mb-4">Ready to work with a truly global agency?</p>
-              <Link to="/contact">
+              <a
+                href="https://forms.gle/YVXpRizgtv7GLcYs5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg" className="bg-gradient-primary hover:opacity-90">
                   Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
