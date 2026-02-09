@@ -84,7 +84,7 @@ const BlogPage = () => {
                 <div className="flex flex-wrap gap-2 mb-6">
                   {featuredArticle.tags.map(tag => (<Badge key={tag} variant="outline">{tag}</Badge>))}
                 </div>
-                <Link to="/portfolio">
+                <Link to={`/blog/${featuredArticle.slug}`}>
                   <Button className="bg-gradient-primary hover:opacity-90">Read Full Case Study <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </Card>
@@ -109,23 +109,25 @@ const BlogPage = () => {
                 const Icon = article.icon;
                 return (
                   <AnimateOnScroll key={article.slug} animation="stagger-in" delay={index * 100}>
-                    <Card className="p-6 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 flex flex-col h-full">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Icon className="h-5 w-5 text-white" />
+                    <Link to={`/blog/${article.slug}`} className="h-full">
+                      <Card className="p-6 hover:shadow-medium transition-all duration-300 group border-border hover:border-primary/30 flex flex-col h-full">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Icon className="h-5 w-5 text-white" />
+                          </div>
+                          <Badge variant="secondary" className="text-xs">{article.category}</Badge>
                         </div>
-                        <Badge variant="secondary" className="text-xs">{article.category}</Badge>
-                      </div>
-                      <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-snug">{article.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 flex-grow leading-relaxed">{article.excerpt}</p>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
-                        <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {article.date}</span>
-                        <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readTime}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {article.tags.map(tag => (<Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>))}
-                      </div>
-                    </Card>
+                        <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-snug">{article.title}</h3>
+                        <p className="text-sm text-muted-foreground mb-4 flex-grow leading-relaxed">{article.excerpt}</p>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
+                          <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {article.date}</span>
+                          <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readTime}</span>
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {article.tags.map(tag => (<Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>))}
+                        </div>
+                      </Card>
+                    </Link>
                   </AnimateOnScroll>
                 );
               })}
