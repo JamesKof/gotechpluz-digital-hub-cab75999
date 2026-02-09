@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -403,13 +404,13 @@ const PortfolioPage = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen page-transition-enter">
       <Navigation />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="max-w-4xl mx-auto text-center animate-scroll-blur-in">
             <div className="inline-block mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
               <p className="text-primary font-semibold text-sm">Success Stories • Real Results</p>
             </div>

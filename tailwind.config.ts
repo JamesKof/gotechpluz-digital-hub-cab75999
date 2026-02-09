@@ -128,6 +128,38 @@ export default {
             transform: "translateY(-10px)"
           }
         },
+        "scroll-fade-in": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scroll-fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(40px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scroll-fade-in-left": {
+          "0%": { opacity: "0", transform: "translateX(-40px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "scroll-fade-in-right": {
+          "0%": { opacity: "0", transform: "translateX(40px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "scroll-scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "scroll-blur-in": {
+          "0%": { opacity: "0", filter: "blur(10px)", transform: "translateY(10px)" },
+          "100%": { opacity: "1", filter: "blur(0px)", transform: "translateY(0)" },
+        },
+        "scroll-stagger-in": {
+          "0%": { opacity: "0", transform: "translateY(30px) scale(0.95)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8", filter: "brightness(1.15)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -137,6 +169,14 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
         "float": "float 3s ease-in-out infinite",
+        "scroll-fade-in": "scroll-fade-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-fade-in-up": "scroll-fade-in-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-fade-in-left": "scroll-fade-in-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-fade-in-right": "scroll-fade-in-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-scale-in": "scroll-scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-blur-in": "scroll-blur-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "scroll-stagger-in": "scroll-stagger-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
