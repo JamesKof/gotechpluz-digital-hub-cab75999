@@ -17,9 +17,9 @@ const FloatingWhatsAppButton = () => {
       type="button"
       onClick={handleClick}
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 flex h-14 w-14 md:h-12 md:w-12 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground shadow-medium hover:shadow-lg hover-scale focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+      className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 flex h-14 w-14 md:h-13 md:w-13 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] text-white shadow-[0_6px_20px_hsl(142_70%_45%/0.35)] hover:shadow-[0_8px_28px_hsl(142_70%_45%/0.45)] hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
     >
-      <MessageCircle className="h-7 w-7" />
+      <MessageCircle className="h-6 w-6" />
     </button>
   );
 };

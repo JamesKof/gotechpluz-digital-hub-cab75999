@@ -113,16 +113,34 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Elegant selection color */
+  ::selection {
+    background: hsl(142 70% 45% / 0.15);
+    color: hsl(142 70% 30%);
   }
 
   .bg-grid-pattern {
     background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.1) 1px, transparent 0);
     background-size: 40px 40px;
+  }
+
+  /* Refined heading letter-spacing */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
   }
 }
 
@@ -133,6 +151,14 @@ All colors MUST be HSL.
 
   .page-transition-enter {
     animation: page-fade-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Refined card hover */
+  .card-elegant {
+    @apply transition-all duration-300;
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 }
 
