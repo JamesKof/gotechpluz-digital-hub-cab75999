@@ -166,6 +166,91 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Local Implementing Partner */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <AnimateOnScroll animation="fade-in-up">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
+                  <Globe2 className="h-4 w-4 text-accent" />
+                  <span className="text-sm font-semibold text-accent">Local Partner, Global Standards</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Your Trusted <span className="bg-gradient-accent bg-clip-text text-transparent">Local Implementing Partner</span> in Ghana & Africa
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                  Does your international project require a local partner on the ground? We are your most capable implementing partner in Ghana and across Africa.
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in-up" delay={150}>
+              <Card className="p-8 md:p-12 bg-gradient-to-br from-muted/30 to-background border-accent/10 mb-10">
+                <div className="grid md:grid-cols-2 gap-10 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">Why Partner With Gotechpluz?</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      International organizations, NGOs, development agencies, and global enterprises often require a <strong>reliable local partner</strong> to execute digital projects in Ghana and West Africa. Gotechpluz bridges the gap between global vision and local execution.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      We bring <strong>on-the-ground expertise</strong>, cultural intelligence, regulatory knowledge, and a proven track record with government institutions and international stakeholders — making us the ideal local implementation arm for your projects.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { title: "Local Expertise", desc: "Deep knowledge of Ghanaian regulations, culture & business landscape" },
+                      { title: "Government Relations", desc: "Established relationships with public sector institutions" },
+                      { title: "On-Ground Execution", desc: "Physical presence for deployment, training & support" },
+                      { title: "International Standards", desc: "Global-grade quality, security & compliance" },
+                    ].map((item) => (
+                      <div key={item.title} className="p-4 bg-background rounded-xl border border-border hover:border-accent/30 transition-colors">
+                        <div className="text-accent font-bold mb-1 text-sm">{item.title}</div>
+                        <p className="text-xs text-muted-foreground">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="stagger-in">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                {[
+                  { icon: Shield, title: "Compliance & Governance", desc: "We navigate local regulatory frameworks so you don't have to" },
+                  { icon: Users, title: "Stakeholder Management", desc: "On-ground liaison with local partners, vendors, and government bodies" },
+                  { icon: Globe2, title: "Multi-Country Reach", desc: "Expanding presence across West Africa for regional projects" },
+                  { icon: Target, title: "End-to-End Delivery", desc: "From planning to deployment, training, and ongoing support" },
+                ].map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <Card key={item.title} className="p-6 text-center hover:shadow-medium transition-all duration-300 group border-border hover:border-accent/30 h-full" style={{ animationDelay: `${index * 100}ms` }}>
+                      <div className="w-12 h-12 mx-auto mb-4 bg-gradient-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h4 className="font-bold mb-2 group-hover:text-accent transition-colors">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </Card>
+                  );
+                })}
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in">
+              <div className="text-center">
+                <p className="text-muted-foreground mb-4">Have an international project that needs local implementation?</p>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <a href="https://forms.gle/YVXpRizgtv7GLcYs5" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="bg-gradient-accent hover:opacity-90">Partner With Us <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  </a>
+                  <Button size="lg" variant="outline" type="button" onClick={openWhatsAppFromAbout}>Chat on WhatsApp</Button>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
       {/* Our Approach */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">

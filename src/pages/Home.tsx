@@ -269,6 +269,43 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Local Implementing Partner */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <AnimateOnScroll animation="fade-in-up">
+              <Card className="p-8 md:p-12 bg-gradient-to-br from-background to-muted/30 border-accent/10 overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
+                    <Globe className="h-4 w-4 text-accent" />
+                    <span className="text-sm font-semibold text-accent">Local Partner for Global Projects</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                    Your Most Capable <span className="bg-gradient-accent bg-clip-text text-transparent">Local Implementing Partner</span> in Ghana & Africa
+                  </h2>
+                  <p className="text-muted-foreground mb-6 leading-relaxed max-w-3xl">
+                    Does your international project require a local partner? Gotechpluz bridges the gap between global vision and on-the-ground execution. From government relations to regulatory compliance and stakeholder management — we are your trusted implementation arm in Ghana and across West Africa.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Link to="/about">
+                      <Button size="lg" className="bg-gradient-accent hover:opacity-90">
+                        Learn About Our Partnership <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <a href="https://forms.gle/YVXpRizgtv7GLcYs5" target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" variant="outline">
+                        Partner With Us <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </Card>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Highlights */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
