@@ -10,6 +10,10 @@ import ServicesPage from "./pages/ServicesPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ProcessPage from "./pages/ProcessPage";
+import WebDesignGhanaPage from "./pages/WebDesignGhanaPage";
+import DigitalMarketingGhanaPage from "./pages/DigitalMarketingGhanaPage";
+import SeoServicesGhanaPage from "./pages/SeoServicesGhanaPage";
+import BrandingAgencyGhanaPage from "./pages/BrandingAgencyGhanaPage";
 import NotFound from "./pages/NotFound";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
@@ -48,6 +52,10 @@ const App = () => (
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/web-design-ghana" element={<WebDesignGhanaPage />} />
+          <Route path="/digital-marketing-ghana" element={<DigitalMarketingGhanaPage />} />
+          <Route path="/seo-services-ghana" element={<SeoServicesGhanaPage />} />
+          <Route path="/branding-agency-ghana" element={<BrandingAgencyGhanaPage />} />
           
           <Route path="/analytics" element={<AnalyticsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
