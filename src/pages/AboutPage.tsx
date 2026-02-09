@@ -4,8 +4,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Target, Eye, Globe2, Shield, Lightbulb, Users, Heart, TrendingUp, Building2, Stethoscope, Truck, ShoppingBag, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const AboutPage = () => {
+  usePageSEO({
+    title: "About Gotechpluz | Best Digital Agency in Ghana - Web Development & IT Solutions",
+    description: "Learn about Gotechpluz, Ghana's premier digital marketing agency and software development company in Accra. 5+ years serving government institutions, healthcare organizations, NGOs, and SMEs with professional web development, branding, and IT solutions.",
+    canonical: `${BASE_URL}/about`,
+    keywords: "about Gotechpluz, digital agency Ghana, professional web developers Ghana, experienced IT consultants Ghana, reliable digital marketing agency Ghana",
+  });
   const whyChooseUs = [
     {
       icon: Lightbulb,

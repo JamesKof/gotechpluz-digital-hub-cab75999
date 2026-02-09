@@ -8,8 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const Home = () => {
+  usePageSEO({
+    title: "Web Development Company in Ghana | Digital Marketing Agency Accra - Gotechpluz",
+    description: "Gotechpluz is Ghana's leading digital marketing agency and web development company in Accra. Professional website design, SEO services, branding, e-commerce solutions & IT consultancy. Trusted by government institutions and SMEs.",
+    canonical: BASE_URL,
+    keywords: "digital marketing agency Ghana, web development company Ghana, website design Accra, SEO services Ghana, branding agency Ghana, e-commerce development Ghana, IT solutions Ghana",
+  });
   const highlights = [
     {
       icon: Sparkles,
