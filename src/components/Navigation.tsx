@@ -25,6 +25,7 @@ const Navigation = () => {
     { href: "/services", label: "Services" },
     { href: "/process", label: "How We Work" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/blog", label: "Blog" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
