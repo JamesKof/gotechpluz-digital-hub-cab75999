@@ -141,6 +141,40 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Local Implementing Partner */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <AnimateOnScroll animation="fade-in-up">
+              <Card className="p-8 md:p-12 bg-gradient-to-br from-muted/30 to-background border-accent/10">
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-4">
+                    <Globe className="h-4 w-4 text-accent" />
+                    <span className="text-sm font-semibold text-accent">International Projects</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                    Need a <span className="bg-gradient-accent bg-clip-text text-transparent">Local Implementing Partner</span>?
+                  </h2>
+                  <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                    We are your most capable local partner in Ghana and Africa. Whether your project requires on-ground execution, government relations, regulatory compliance, or stakeholder management — Gotechpluz delivers international standards with local expertise.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Link to="/about">
+                    <Button className="bg-gradient-accent hover:opacity-90">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Button variant="outline" onClick={openWhatsAppFromServices}>
+                    Discuss Partnership
+                  </Button>
+                </div>
+              </Card>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
       {/* Approach Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
