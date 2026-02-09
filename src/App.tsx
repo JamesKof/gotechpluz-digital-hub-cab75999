@@ -16,6 +16,7 @@ import SeoServicesGhanaPage from "./pages/SeoServicesGhanaPage";
 import BrandingAgencyGhanaPage from "./pages/BrandingAgencyGhanaPage";
 import NotFound from "./pages/NotFound";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import BlogPage from "./pages/BlogPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import MobileContactBar from "./components/MobileContactBar";
 
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/digital-marketing-ghana" element={<DigitalMarketingGhanaPage />} />
           <Route path="/seo-services-ghana" element={<SeoServicesGhanaPage />} />
           <Route path="/branding-agency-ghana" element={<BrandingAgencyGhanaPage />} />
+          <Route path="/blog" element={<BlogPage />} />
           
           <Route path="/analytics" element={<AnalyticsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

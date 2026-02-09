@@ -135,6 +135,29 @@ const BrandingAgencyGhanaPage = () => {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6 text-center">Explore Related Services</h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <Link to="/web-design-ghana" className="p-5 bg-muted/30 rounded-xl border border-border hover:border-primary/30 transition-colors text-center group">
+                <h3 className="font-bold group-hover:text-primary transition-colors mb-1">Web Design</h3>
+                <p className="text-sm text-muted-foreground">Professional websites in Ghana</p>
+              </Link>
+              <Link to="/digital-marketing-ghana" className="p-5 bg-muted/30 rounded-xl border border-border hover:border-primary/30 transition-colors text-center group">
+                <h3 className="font-bold group-hover:text-primary transition-colors mb-1">Digital Marketing</h3>
+                <p className="text-sm text-muted-foreground">Grow your online presence</p>
+              </Link>
+              <Link to="/seo-services-ghana" className="p-5 bg-muted/30 rounded-xl border border-border hover:border-primary/30 transition-colors text-center group">
+                <h3 className="font-bold group-hover:text-primary transition-colors mb-1">SEO Services</h3>
+                <p className="text-sm text-muted-foreground">Rank higher on Google</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
