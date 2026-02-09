@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,13 @@ const PortfolioPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const { openWhatsApp } = useWhatsApp();
+
+  usePageSEO({
+    title: "Portfolio | Web Design & Digital Marketing Case Studies Ghana - Gotechpluz",
+    description: "View Gotechpluz's portfolio of web development, branding, and digital marketing projects in Ghana. Case studies for Ghana EXIM Bank, Ghana Immigration Service, Prudential Insurance, Hogbetsotso Festival, and more.",
+    canonical: `${BASE_URL}/portfolio`,
+    keywords: "web design portfolio Ghana, digital marketing case studies Ghana, website development examples Accra, branding projects Ghana, top-rated web design company Ghana",
+  });
 
   const socialMediaDesigns = [
     {

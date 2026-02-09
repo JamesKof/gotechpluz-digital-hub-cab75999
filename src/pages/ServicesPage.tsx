@@ -4,10 +4,17 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Code, Megaphone, Palette, ShoppingCart, Smartphone, Video, Search, BarChart3, Globe, Layers, LineChart, Sparkles, ClipboardList, ExternalLink, ArrowRight } from "lucide-react";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
 const ServicesPage = () => {
+  usePageSEO({
+    title: "Digital Marketing & Web Development Services in Ghana | Gotechpluz",
+    description: "Professional website design services, SEO, digital marketing, branding, mobile app development, e-commerce solutions & IT consultancy in Ghana. Affordable web design in Accra. Custom software development for businesses.",
+    canonical: `${BASE_URL}/services`,
+    keywords: "website design services Ghana, digital marketing services Ghana, SEO services Ghana, branding agency Ghana, e-commerce website development Ghana, mobile app development Ghana, IT support services Ghana, business IT solutions Ghana",
+  });
   const { openWhatsApp } = useWhatsApp();
   
   const openWhatsAppFromServices = () => {

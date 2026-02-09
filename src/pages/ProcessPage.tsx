@@ -14,9 +14,17 @@ import {
   Send
 } from "lucide-react";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const ProcessPage = () => {
   const { openWhatsApp } = useWhatsApp();
+
+  usePageSEO({
+    title: "How We Work | Our Digital Project Process - Gotechpluz Ghana",
+    description: "Discover Gotechpluz's proven 5-step process for web development, digital marketing, and branding projects in Ghana. From research and strategy to deployment and ongoing support.",
+    canonical: `${BASE_URL}/process`,
+    keywords: "web development process Ghana, digital project methodology, how we work Gotechpluz, project delivery Ghana",
+  });
 
   const handleWhatsAppClick = () => {
     openWhatsApp({

@@ -1,8 +1,15 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const NotFound = () => {
   const location = useLocation();
+
+  usePageSEO({
+    title: "Page Not Found | Gotechpluz - Digital Agency Ghana",
+    description: "The page you're looking for doesn't exist. Visit Gotechpluz for web development, digital marketing, and IT solutions in Ghana.",
+    canonical: BASE_URL,
+  });
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);

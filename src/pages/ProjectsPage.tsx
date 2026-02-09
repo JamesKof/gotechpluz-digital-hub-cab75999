@@ -4,8 +4,15 @@ import { Card } from "@/components/ui/card";
 import { Briefcase, ExternalLink, Sparkles, Leaf, Building2, Gem } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const ProjectsPage = () => {
+  usePageSEO({
+    title: "Our Projects | Web Development & Branding Portfolio - Gotechpluz Ghana",
+    description: "Explore Gotechpluz's projects across web development, mobile apps, branding, and digital marketing in Ghana. Featured work for government institutions, healthcare, agribusiness, and SMEs.",
+    canonical: `${BASE_URL}/projects`,
+    keywords: "web development projects Ghana, branding portfolio Ghana, digital marketing case studies, website design portfolio Accra",
+  });
   const { openWhatsApp } = useWhatsApp();
 
   const projects = [
