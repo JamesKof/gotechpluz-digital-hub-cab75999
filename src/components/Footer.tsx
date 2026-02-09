@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div className="md:col-span-2">
+            <div>
               <img src={logo} alt="Gotechpluz" className="h-12 mb-4" />
               <p className="text-muted-foreground text-sm mb-4">
                 Elevating Digital Experience - Empowering global success through innovative digital solutions.
@@ -40,6 +40,16 @@ const Footer = () => {
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold mb-4">Services</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/web-design-ghana" className="text-muted-foreground hover:text-primary transition-colors">Web Design Ghana</a></li>
+                <li><a href="/digital-marketing-ghana" className="text-muted-foreground hover:text-primary transition-colors">Digital Marketing</a></li>
+                <li><a href="/seo-services-ghana" className="text-muted-foreground hover:text-primary transition-colors">SEO Services</a></li>
+                <li><a href="/branding-agency-ghana" className="text-muted-foreground hover:text-primary transition-colors">Branding & Design</a></li>
               </ul>
             </div>
 

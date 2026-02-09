@@ -2,9 +2,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Code, Megaphone, Palette, ShoppingCart, Smartphone, Video, Search, BarChart3, Globe, Layers, LineChart, Sparkles, ClipboardList, ExternalLink, ArrowRight } from "lucide-react";
+import { Code, Megaphone, Palette, ShoppingCart, Smartphone, Video, Search, BarChart3, Globe, Layers, LineChart, Sparkles, ClipboardList, ExternalLink, ArrowRight, HelpCircle } from "lucide-react";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
 
 const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
@@ -228,6 +230,100 @@ const ServicesPage = () => {
                 </p>
               </div>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Long-Tail SEO Keywords */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+                <HelpCircle className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Frequently Asked Questions</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Common Questions About Our <span className="bg-gradient-accent bg-clip-text text-transparent">Digital Services</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Answers to what businesses in Ghana ask us most
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="cost" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  How much does website design cost in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Website design costs in Ghana vary depending on complexity, features, and the type of website you need. A basic business website typically starts from GHS 3,000–5,000, while custom web applications and e-commerce platforms range from GHS 8,000–25,000+. At Gotechpluz, we provide transparent pricing with a detailed proposal after understanding your requirements. <Link to="/process" className="text-primary hover:underline">Learn about our process</Link> or <a href="https://forms.gle/YVXpRizgtv7GLcYs5" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">fill out our questionnaire</a> for a custom quote.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="best-agency" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  What is the best digital marketing agency for small businesses in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  The best digital marketing agency for small businesses in Ghana combines affordability with proven results. Gotechpluz has helped SMEs like Emmaldo Ghana Limited achieve 100% annual turnover increase and Paully Rice gain 300% brand recognition growth through strategic branding and digital marketing. We offer tailored packages designed specifically for small businesses and startups in Accra and across Ghana. <Link to="/portfolio" className="text-primary hover:underline">See our case studies</Link>.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="affordable" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  Where can I find affordable web design services in Accra?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Gotechpluz offers affordable web design services in Accra without compromising on quality. Based in Accra, we've built websites for government institutions, healthcare organizations, and growing businesses across Ghana. Our pricing is competitive, and we offer flexible payment plans. We focus on delivering maximum value—responsive design, SEO optimization, and ongoing support are included with every project.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="promote-online" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  How do I promote my business online in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Promoting your business online in Ghana requires a multi-channel strategy: a professional website optimized for Google search, active social media presence on platforms like Instagram and Facebook, Google Ads for immediate visibility, and SEO for long-term organic traffic. At Gotechpluz, we create comprehensive digital marketing strategies tailored to the Ghanaian market, helping businesses reach their target audience effectively. <Link to="/digital-marketing-ghana" className="text-primary hover:underline">Learn about our digital marketing services</Link>.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="wordpress-vs-custom" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  What's the difference between WordPress and custom website development in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  WordPress is a pre-built CMS ideal for blogs and simple business sites—it's faster to launch and more affordable. Custom website development offers complete control over design, features, and performance—perfect for complex applications, e-commerce platforms, or government portals. At Gotechpluz, we recommend the right approach based on your business needs and budget. Our custom-built platforms for clients like Ghana EXIM Bank and Ghana Health Connect demonstrate the power of tailored solutions.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="seo-ghana" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  How long does SEO take to work for businesses in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  SEO results typically take 3–6 months to become noticeable, depending on your industry competition and current website health. Local SEO for businesses in Accra can show faster results since competition is less intense than global markets. Our SEO services include on-page optimization, content strategy, Google Business Profile setup, and technical SEO—all focused on sustainable, long-term rankings. <Link to="/seo-services-ghana" className="text-primary hover:underline">Explore our SEO services</Link>.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="ecommerce" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  Can you build an e-commerce website with mobile money payment in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Yes! We specialize in e-commerce website development in Ghana with full integration of local payment gateways including Mobile Money (MTN MoMo, Vodafone Cash, AirtelTigo Money), as well as international options like Visa, Mastercard, and PayPal. Our e-commerce solutions include inventory management, order tracking, and responsive design optimized for mobile shoppers in Ghana.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="government" className="border border-border rounded-xl px-6 data-[state=open]:border-primary/30">
+                <AccordionTrigger className="text-left font-semibold text-base md:text-lg hover:no-underline">
+                  Do you build websites for government institutions in Ghana?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Absolutely. Gotechpluz is a trusted web development partner for government institutions in Ghana. We've built secure platforms for the Ghana Immigration Service, developed the Ghana Health Connect platform for NHIS, and created digital solutions for the Ghana EXIM Bank. Our government projects prioritize security, accessibility, data protection, and compliance with public sector standards. <Link to="/portfolio" className="text-primary hover:underline">View our government projects</Link>.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>
