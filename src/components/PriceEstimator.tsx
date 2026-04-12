@@ -530,14 +530,58 @@ const PriceEstimator = () => {
             </p>
           </Card>
 
+          {isSent ? (
+            <Card className="p-6 border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-900">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="h-6 w-6 text-green-600" />
+                <h3 className="font-semibold text-green-800 dark:text-green-400">Estimate Sent Successfully!</h3>
+              </div>
+              <p className="text-sm text-green-700 dark:text-green-300 mb-1">
+                📧 A copy has been sent to <strong>{clientEmail}</strong>
+              </p>
+              <p className="text-sm text-green-700 dark:text-green-300 mb-1">
+                📱 Shared with Gotechpluz via WhatsApp
+              </p>
+              <p className="text-sm text-green-700 dark:text-green-300">
+                📋 Our team will review and get back to you shortly.
+              </p>
+            </Card>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {!clientEmail && (
+                <Card className="p-3 border-amber-200 bg-amber-50 dark:bg-amber-950/20">
+                  <p className="text-sm text-amber-700 dark:text-amber-300 flex items-center gap-2">
+                    <Info className="h-4 w-4 flex-shrink-0" />
+                    Go back to add your email to receive a copy of this estimate.
+                  </p>
+                </Card>
+              )}
+            </div>
+          )}
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
-              onClick={handleWhatsAppShare}
-              className="flex-1 bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] text-white"
+              onClick={handleSendEstimate}
+              disabled={isSending || isSent}
+              className="flex-1 bg-primary hover:bg-primary/90"
               size="lg"
             >
-              <Send className="h-4 w-4 mr-2" />
-              Share via WhatsApp
+              {isSending ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Sending Estimate...
+                </>
+              ) : isSent ? (
+                <>
+                  <CheckCircle2 className="h-4 w-4 mr-2" />
+                  Estimate Sent
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4 mr-2" />
+                  Send Estimate (Email + WhatsApp)
+                </>
+              )}
             </Button>
             <Button
               variant="outline"
@@ -551,6 +595,7 @@ const PriceEstimator = () => {
                 setClientEmail("");
                 setExtraPages(0);
                 setComplexitySlider(50);
+                setIsSent(false);
               }}
             >
               Start Over
