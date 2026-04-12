@@ -17,6 +17,7 @@ import BrandingAgencyGhanaPage from "./pages/BrandingAgencyGhanaPage";
 import NotFound from "./pages/NotFound";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import PriceEstimatorPage from "./pages/PriceEstimatorPage";
+import AdminDashboard from "./pages/AdminDashboard";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
