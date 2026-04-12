@@ -22,6 +22,9 @@ import {
   Info,
   Plus,
   Minus,
+  Mail,
+  Loader2,
+  CheckCircle2,
 } from "lucide-react";
 
 type Step = "package" | "addons" | "details" | "invoice";
