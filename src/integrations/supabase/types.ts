@@ -14,7 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      estimates: {
+        Row: {
+          client_email: string
+          client_name: string
+          created_at: string
+          custom_features: string | null
+          grand_total: number
+          id: string
+          line_items: Json
+          package_name: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          client_email?: string
+          client_name?: string
+          created_at?: string
+          custom_features?: string | null
+          grand_total?: number
+          id?: string
+          line_items?: Json
+          package_name?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          client_email?: string
+          client_name?: string
+          created_at?: string
+          custom_features?: string | null
+          grand_total?: number
+          id?: string
+          line_items?: Json
+          package_name?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
