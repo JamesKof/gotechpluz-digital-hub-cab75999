@@ -424,12 +424,13 @@ const PriceEstimator = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Email (optional)</label>
+                <label className="text-sm font-medium">Email <span className="text-destructive">*</span></label>
                 <Input
                   type="email"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   placeholder="your@email.com"
+                  required
                 />
               </div>
             </div>
