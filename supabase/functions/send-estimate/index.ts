@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.86.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -108,7 +109,28 @@ const handler = async (req: Request): Promise<Response> => {
     const data: EstimateRequest = await req.json();
     console.log("Received estimate request:", data.clientName, data.clientEmail);
 
-    const results: { clientEmail?: boolean; teamEmail?: boolean } = {};
+    // Store estimate in database
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const { error: dbError } = await supabase.from("estimates").insert({
+      client_name: data.clientName,
+      client_email: data.clientEmail,
+      package_name: data.packageName,
+      line_items: data.lineItems,
+      custom_features: data.customFeatures || "",
+      grand_total: data.grandTotal,
+      status: "pending",
+    });
+
+    if (dbError) {
+      console.error("DB insert error:", dbError);
+    }
+
+    const results: { clientEmail?: boolean; teamEmail?: boolean; dbStored?: boolean } = {
+      dbStored: !dbError,
+    };
 
     // Send to Gotechpluz team
     const teamRes = await resend.emails.send({
