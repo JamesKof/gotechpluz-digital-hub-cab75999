@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Check,
   ChevronRight,
@@ -20,13 +22,16 @@ import {
   Info,
   Plus,
   Minus,
+  Mail,
+  Loader2,
+  CheckCircle2,
 } from "lucide-react";
 
 type Step = "package" | "addons" | "details" | "invoice";
 
 const PriceEstimator = () => {
   const { openWhatsApp } = useWhatsApp();
-
+  const { toast } = useToast();
   const [step, setStep] = useState<Step>("package");
   const [selectedPkg, setSelectedPkg] = useState<string | null>(null);
   const [complexitySlider, setComplexitySlider] = useState(50);
@@ -35,7 +40,8 @@ const PriceEstimator = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [extraPages, setExtraPages] = useState(0);
-
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
   const pkg = packages.find((p) => p.id === selectedPkg) ?? null;
 
   const packagePrice = useMemo(() => {
@@ -102,12 +108,80 @@ const PriceEstimator = () => {
     return lines.join("\n");
   };
 
-  const handleWhatsAppShare = () => {
-    openWhatsApp({
-      source: "price_estimator",
-      message: buildInvoiceText(),
-      toastTitle: "Sending estimate via WhatsApp",
+  const buildLineItems = () => {
+    const items: { label: string; detail?: string; amount: number }[] = [
+      { label: `${pkg?.name} Package`, detail: pkg?.idealFor, amount: packagePrice },
+    ];
+    if (extraPages > 0) {
+      items.push({ label: `Extra Pages × ${extraPages}`, amount: extraPagesPrice });
+    }
+    Object.entries(addOnPrices).forEach(([id, price]) => {
+      const addon = addOns.find((a) => a.id === id);
+      items.push({ label: addon?.name ?? id, amount: price });
     });
+    return items;
+  };
+
+  const handleSendEstimate = async () => {
+    if (!clientEmail) {
+      toast({
+        title: "Email required",
+        description: "Please go back and enter your email address to receive a copy of the estimate.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      // 1. Send emails to client + team
+      const { data, error } = await supabase.functions.invoke("send-estimate", {
+        body: {
+          clientName,
+          clientEmail,
+          packageName: pkg?.name ?? "",
+          lineItems: buildLineItems(),
+          customFeatures: customFeatures.trim() || undefined,
+          grandTotal,
+          dateString: new Date().toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }),
+        },
+      });
+
+      if (error) throw error;
+
+      // 2. Share via WhatsApp
+      openWhatsApp({
+        source: "price_estimator",
+        message: buildInvoiceText(),
+        toastTitle: "Estimate sent & shared via WhatsApp",
+      });
+
+      setIsSent(true);
+      toast({
+        title: "✅ Estimate sent successfully!",
+        description: `A copy has been emailed to ${clientEmail} and our team has been notified.`,
+      });
+    } catch (err: any) {
+      console.error("Send estimate error:", err);
+      toast({
+        title: "Email delivery issue",
+        description: "We'll still share via WhatsApp. Please check your email later.",
+        variant: "destructive",
+      });
+      // Still share via WhatsApp as fallback
+      openWhatsApp({
+        source: "price_estimator",
+        message: buildInvoiceText(),
+        toastTitle: "Sharing estimate via WhatsApp",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const steps: { key: Step; label: string; icon: React.ReactNode }[] = [
@@ -350,12 +424,13 @@ const PriceEstimator = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Email (optional)</label>
+                <label className="text-sm font-medium">Email <span className="text-destructive">*</span></label>
                 <Input
                   type="email"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   placeholder="your@email.com"
+                  required
                 />
               </div>
             </div>
@@ -456,14 +531,58 @@ const PriceEstimator = () => {
             </p>
           </Card>
 
+          {isSent ? (
+            <Card className="p-6 border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-900">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="h-6 w-6 text-green-600" />
+                <h3 className="font-semibold text-green-800 dark:text-green-400">Estimate Sent Successfully!</h3>
+              </div>
+              <p className="text-sm text-green-700 dark:text-green-300 mb-1">
+                📧 A copy has been sent to <strong>{clientEmail}</strong>
+              </p>
+              <p className="text-sm text-green-700 dark:text-green-300 mb-1">
+                📱 Shared with Gotechpluz via WhatsApp
+              </p>
+              <p className="text-sm text-green-700 dark:text-green-300">
+                📋 Our team will review and get back to you shortly.
+              </p>
+            </Card>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {!clientEmail && (
+                <Card className="p-3 border-amber-200 bg-amber-50 dark:bg-amber-950/20">
+                  <p className="text-sm text-amber-700 dark:text-amber-300 flex items-center gap-2">
+                    <Info className="h-4 w-4 flex-shrink-0" />
+                    Go back to add your email to receive a copy of this estimate.
+                  </p>
+                </Card>
+              )}
+            </div>
+          )}
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
-              onClick={handleWhatsAppShare}
-              className="flex-1 bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] text-white"
+              onClick={handleSendEstimate}
+              disabled={isSending || isSent}
+              className="flex-1 bg-primary hover:bg-primary/90"
               size="lg"
             >
-              <Send className="h-4 w-4 mr-2" />
-              Share via WhatsApp
+              {isSending ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Sending Estimate...
+                </>
+              ) : isSent ? (
+                <>
+                  <CheckCircle2 className="h-4 w-4 mr-2" />
+                  Estimate Sent
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4 mr-2" />
+                  Send Estimate (Email + WhatsApp)
+                </>
+              )}
             </Button>
             <Button
               variant="outline"
@@ -477,6 +596,7 @@ const PriceEstimator = () => {
                 setClientEmail("");
                 setExtraPages(0);
                 setComplexitySlider(50);
+                setIsSent(false);
               }}
             >
               Start Over
