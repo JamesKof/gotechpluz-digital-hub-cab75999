@@ -8,7 +8,7 @@ const PriceEstimatorPage = () => {
     title: "Price Estimator | Gotechpluz - Get an Instant Website Quote",
     description:
       "Use our interactive price estimator to get an instant quote for your website project. Choose packages, add features, and share your estimate via WhatsApp.",
-    canonicalPath: "/price-estimator",
+    canonical: "/price-estimator",
   });
 
   return (
