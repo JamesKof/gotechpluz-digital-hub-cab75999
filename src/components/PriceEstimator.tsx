@@ -108,12 +108,80 @@ const PriceEstimator = () => {
     return lines.join("\n");
   };
 
-  const handleWhatsAppShare = () => {
-    openWhatsApp({
-      source: "price_estimator",
-      message: buildInvoiceText(),
-      toastTitle: "Sending estimate via WhatsApp",
+  const buildLineItems = () => {
+    const items: { label: string; detail?: string; amount: number }[] = [
+      { label: `${pkg?.name} Package`, detail: pkg?.idealFor, amount: packagePrice },
+    ];
+    if (extraPages > 0) {
+      items.push({ label: `Extra Pages × ${extraPages}`, amount: extraPagesPrice });
+    }
+    Object.entries(addOnPrices).forEach(([id, price]) => {
+      const addon = addOns.find((a) => a.id === id);
+      items.push({ label: addon?.name ?? id, amount: price });
     });
+    return items;
+  };
+
+  const handleSendEstimate = async () => {
+    if (!clientEmail) {
+      toast({
+        title: "Email required",
+        description: "Please go back and enter your email address to receive a copy of the estimate.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      // 1. Send emails to client + team
+      const { data, error } = await supabase.functions.invoke("send-estimate", {
+        body: {
+          clientName,
+          clientEmail,
+          packageName: pkg?.name ?? "",
+          lineItems: buildLineItems(),
+          customFeatures: customFeatures.trim() || undefined,
+          grandTotal,
+          dateString: new Date().toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }),
+        },
+      });
+
+      if (error) throw error;
+
+      // 2. Share via WhatsApp
+      openWhatsApp({
+        source: "price_estimator",
+        message: buildInvoiceText(),
+        toastTitle: "Estimate sent & shared via WhatsApp",
+      });
+
+      setIsSent(true);
+      toast({
+        title: "✅ Estimate sent successfully!",
+        description: `A copy has been emailed to ${clientEmail} and our team has been notified.`,
+      });
+    } catch (err: any) {
+      console.error("Send estimate error:", err);
+      toast({
+        title: "Email delivery issue",
+        description: "We'll still share via WhatsApp. Please check your email later.",
+        variant: "destructive",
+      });
+      // Still share via WhatsApp as fallback
+      openWhatsApp({
+        source: "price_estimator",
+        message: buildInvoiceText(),
+        toastTitle: "Sharing estimate via WhatsApp",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const steps: { key: Step; label: string; icon: React.ReactNode }[] = [
