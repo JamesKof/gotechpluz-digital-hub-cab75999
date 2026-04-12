@@ -31,7 +31,7 @@ type Step = "package" | "addons" | "details" | "invoice";
 
 const PriceEstimator = () => {
   const { openWhatsApp } = useWhatsApp();
-
+  const { toast } = useToast();
   const [step, setStep] = useState<Step>("package");
   const [selectedPkg, setSelectedPkg] = useState<string | null>(null);
   const [complexitySlider, setComplexitySlider] = useState(50);
