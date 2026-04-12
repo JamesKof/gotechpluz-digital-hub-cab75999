@@ -40,7 +40,8 @@ const PriceEstimator = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [extraPages, setExtraPages] = useState(0);
-
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
   const pkg = packages.find((p) => p.id === selectedPkg) ?? null;
 
   const packagePrice = useMemo(() => {
