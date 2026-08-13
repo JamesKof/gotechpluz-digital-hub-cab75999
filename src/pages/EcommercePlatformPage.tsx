@@ -25,8 +25,8 @@ import {
   MessageCircle,
   CalendarCheck,
 } from "lucide-react";
-import qlickersShot from "@/assets/portfolio-qlickers.png.asset.json";
-import stylebyfefShot from "@/assets/portfolio-stylebyfef.png.asset.json";
+import qlickersShot from "@/assets/portfolio-qlickers.png";
+import stylebyfefShot from "@/assets/portfolio-stylebyfef.png";
 
 const EcommercePlatformPage = () => {
   const { openWhatsApp } = useWhatsApp();
@@ -102,7 +102,7 @@ const EcommercePlatformPage = () => {
       name: "Qlickers",
       url: "https://www.qlickers.com/",
       tagline: "General marketplace across nine retail categories",
-      image: qlickersShot.url,
+      image: qlickersShot,
       points: [
         "Multi-category marketplace with preorders and daily deals",
         "Same-day Accra delivery plus nationwide dispatch",
@@ -113,7 +113,7 @@ const EcommercePlatformPage = () => {
       name: "StyleByFef",
       url: "https://www.stylebyfef.com/",
       tagline: "Fashion, beauty and lifestyle retail storefront",
-      image: stylebyfefShot.url,
+      image: stylebyfefShot,
       points: [
         "Editorial merchandising with collections and clearance engine",
         "Wishlists, variant sizing and curated trend landing pages",
