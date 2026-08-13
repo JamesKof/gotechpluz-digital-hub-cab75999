@@ -41,6 +41,8 @@ import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
 import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
 import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
 import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
+import qlickersShot from "@/assets/portfolio-qlickers.png.asset.json";
+import stylebyfefShot from "@/assets/portfolio-stylebyfef.png.asset.json";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
