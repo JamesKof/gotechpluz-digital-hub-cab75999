@@ -30,6 +30,7 @@ const Footer = () => {
                 <li><a href="/process" className="text-muted-foreground hover:text-primary transition-colors">How We Work</a></li>
                 <li><a href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</a></li>
                 <li><a href="/price-estimator" className="text-muted-foreground hover:text-primary transition-colors">Price Estimator</a></li>
+                <li><a href="/ecommerce-platform" className="text-muted-foreground hover:text-primary transition-colors">E-commerce Platform</a></li>
                 <li>
                   <a 
                     href={QUESTIONNAIRE_URL}
