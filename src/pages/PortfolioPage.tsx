@@ -41,6 +41,8 @@ import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
 import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
 import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
 import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
+import qlickersShot from "@/assets/portfolio-qlickers.png.asset.json";
+import stylebyfefShot from "@/assets/portfolio-stylebyfef.png.asset.json";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
@@ -365,6 +367,58 @@ const PortfolioPage = () => {
       },
       icon: Gem,
       color: "from-yellow-600 to-amber-700"
+    },
+    {
+      id: 11,
+      title: "Qlickers – Multi-Category E-commerce Platform",
+      client: "Qlickers",
+      category: "E-commerce",
+      tags: ["E-commerce", "Web Development"],
+      link: "https://www.qlickers.com/",
+      description: "Full-scale online marketplace built on the Gotechpluz e-commerce application — storefront, payments, inventory, fulfilment, pickup and drop-off points, custom image ordering and a companion administrative dashboard.",
+      challenge: "Qlickers needed to trade across nine retail categories with preorders, flash deals, multiple payment methods and nationwide delivery, while a small team kept stock, dispatch and customer support under control from one place.",
+      solution: "We deployed our production-ready commerce platform: mobile-first storefront with search, variants, wishlists and preorders; Mobile Money and card checkout; delivery zones plus pickup and drop-off point management; custom image order requests; and a governed admin dashboard for catalogue, orders, riders, customers and reporting.",
+      results: [
+        { metric: "9+", label: "Retail categories live" },
+        { metric: "Same-day", label: "Accra delivery, 2–5 days nationwide" },
+        { metric: "3", label: "Payment rails (card, MoMo, on delivery)" },
+        { metric: "1", label: "Unified admin console" }
+      ],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Row-Level Security", "Mobile Money APIs", "Analytics"],
+      heroImage: qlickersShot.url,
+      testimonial: {
+        quote: "We went from selling in DMs to running a real commerce operation. Stock, orders, riders and pickup points are all in one dashboard, and customers can even upload a photo of what they want.",
+        author: "Operations Lead",
+        company: "Qlickers"
+      },
+      icon: ShoppingCart,
+      color: "from-orange-500 to-amber-600"
+    },
+    {
+      id: 12,
+      title: "StyleByFef – Fashion & Lifestyle Online Store",
+      client: "StyleByFef",
+      category: "E-commerce",
+      tags: ["E-commerce", "Web Development", "Branding"],
+      link: "https://www.stylebyfef.com/",
+      description: "Fashion, beauty and lifestyle storefront powered by the same Gotechpluz e-commerce application, with editorial merchandising, clearance engine, preorders and an administrative dashboard for end-to-end retail operations.",
+      challenge: "A fast-growing fashion retailer needed a premium shopping experience with size variants, curated collections and clearance pricing, plus reliable delivery, returns and pickup options for customers across Ghana.",
+      solution: "We configured the platform for fashion retail: collection and trend landing pages, variant sizing, wishlists, free-delivery thresholds, 14-day returns automation, pickup and drop-off point selection, custom image requests for bespoke pieces, and full inventory, dispatch and revenue reporting in the admin dashboard.",
+      results: [
+        { metric: "8+", label: "Shopping departments" },
+        { metric: "14-day", label: "Automated returns window" },
+        { metric: "GH₵500", label: "Free delivery threshold logic" },
+        { metric: "24/7", label: "Always-on storefront" }
+      ],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Edge Functions", "Payment Gateways", "Cloud Storage"],
+      heroImage: stylebyfefShot.url,
+      testimonial: {
+        quote: "The store looks like a brand, not a template — and behind it we can manage stock, clearance, deliveries and pickups without spreadsheets.",
+        author: "Founder",
+        company: "StyleByFef"
+      },
+      icon: ShoppingCart,
+      color: "from-rose-600 to-red-500"
     }
   ];
 
