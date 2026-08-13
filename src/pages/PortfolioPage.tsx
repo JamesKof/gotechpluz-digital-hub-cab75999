@@ -41,8 +41,8 @@ import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
 import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
 import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
 import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
-import qlickersShot from "@/assets/portfolio-qlickers.png.asset.json";
-import stylebyfefShot from "@/assets/portfolio-stylebyfef.png.asset.json";
+import qlickersShot from "@/assets/portfolio-qlickers.png";
+import stylebyfefShot from "@/assets/portfolio-stylebyfef.png";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
@@ -385,7 +385,7 @@ const PortfolioPage = () => {
         { metric: "1", label: "Unified admin console" }
       ],
       technologies: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Row-Level Security", "Mobile Money APIs", "Analytics"],
-      heroImage: qlickersShot.url,
+      heroImage: qlickersShot,
       testimonial: {
         quote: "We went from selling in DMs to running a real commerce operation. Stock, orders, riders and pickup points are all in one dashboard, and customers can even upload a photo of what they want.",
         author: "Operations Lead",
@@ -411,7 +411,7 @@ const PortfolioPage = () => {
         { metric: "24/7", label: "Always-on storefront" }
       ],
       technologies: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Edge Functions", "Payment Gateways", "Cloud Storage"],
-      heroImage: stylebyfefShot.url,
+      heroImage: stylebyfefShot,
       testimonial: {
         quote: "The store looks like a brand, not a template — and behind it we can manage stock, clearance, deliveries and pickups without spreadsheets.",
         author: "Founder",
