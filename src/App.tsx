@@ -23,6 +23,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import MobileContactBar from "./components/MobileContactBar";
+import FloatingReviewWidget from "./components/FloatingReviewWidget";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
         <AnalyticsListener />
         <FloatingWhatsAppButton />
         <ScrollToTopButton />
+        <FloatingReviewWidget />
         <MobileContactBar />
         <Routes>
           <Route path="/" element={<Home />} />
