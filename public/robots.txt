@@ -1,9 +1,6 @@
 User-agent: Googlebot
 Allow: /
 
-User-agent: Googlebot-Image
-Allow: /
-
 User-agent: Bingbot
 Allow: /
 
@@ -15,8 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
-Allow: /portfolio
-Allow: /projects
-Allow: /ecommerce-platform
 
-Sitemap: https://gotechpluz.com/sitemap.xml
+Sitemap: https://www.gotechpluz.com/sitemap.xml
