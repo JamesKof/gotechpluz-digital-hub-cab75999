@@ -57,16 +57,6 @@ const PortfolioPage = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const { openWhatsApp } = useWhatsApp();
 
-  usePageSEO({
-    title: "Portfolio | Web Design & Digital Marketing Case Studies Ghana - Gotechpluz",
-    description: "Explore Gotechpluz case studies: e-commerce platforms, government portals, healthcare systems, and branding projects delivered across Ghana with measurable results.",
-    canonical: `${BASE_URL}/portfolio`,
-    keywords: "web design portfolio Ghana, digital marketing case studies Ghana, website development examples Accra, branding projects Ghana, top-rated web design company Ghana",
-    ogTitle: "Gotechpluz Portfolio — Case Studies from Ghana's Digital Agency",
-    ogDescription: "Real client outcomes across e-commerce, government, healthcare, finance and branding — see the work behind Gotechpluz.",
-    ogImage: portfolioImages.qlickers.img.src,
-    twitterCard: "summary_large_image",
-  });
 
 
   const socialMediaDesigns = [
@@ -435,6 +425,91 @@ const PortfolioPage = () => {
 
   // Newest projects first (highest id = most recently added)
   const orderedCaseStudies = [...caseStudies].sort((a, b) => b.id - a.id);
+
+  const PORTFOLIO_URL = `${BASE_URL}/portfolio`;
+
+  // ---- Schema.org structured data (Organization + WebPage + CaseStudy items) ----
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
+    name: "Gotechpluz",
+    url: BASE_URL,
+    logo: `${BASE_URL}/favicon.png`,
+    telephone: "+233247233996",
+    email: "info@gotechpluz.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "La Tebu Cr",
+      addressLocality: "Accra",
+      addressCountry: "GH",
+    },
+    areaServed: ["Ghana", "Worldwide"],
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${PORTFOLIO_URL}#webpage`,
+    url: PORTFOLIO_URL,
+    name: "Gotechpluz Portfolio — Web Design & Digital Marketing Case Studies",
+    description:
+      "Case studies from Gotechpluz covering e-commerce platforms, government portals, healthcare systems, branding and digital marketing work delivered in Ghana.",
+    inLanguage: "en",
+    isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website`, url: BASE_URL, name: "Gotechpluz" },
+    publisher: { "@id": `${BASE_URL}/#organization` },
+    primaryImageOfPage: `${BASE_URL}${portfolioImages.qlickers.img.src}`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: PORTFOLIO_URL },
+      ],
+    },
+  };
+
+  const caseStudySchemas = orderedCaseStudies.map((study, index) => ({
+    "@context": "https://schema.org",
+    "@type": ["CreativeWork", "CaseStudy"],
+    "@id": `${PORTFOLIO_URL}#case-study-${study.id}`,
+    url: `${PORTFOLIO_URL}#case-study-${study.id}`,
+    mainEntityOfPage: { "@id": `${PORTFOLIO_URL}#webpage` },
+    position: index + 1,
+    name: study.title,
+    headline: study.title,
+    abstract: study.description,
+    description: `${study.challenge} ${study.solution}`,
+    genre: study.category,
+    keywords: study.tags.join(", "),
+    image: study.heroImage ? `${BASE_URL}${study.heroImage.img.src}` : undefined,
+    inLanguage: "en",
+    creator: { "@id": `${BASE_URL}/#organization` },
+    provider: { "@id": `${BASE_URL}/#organization` },
+    about: { "@type": "Organization", name: study.client },
+    ...(study.link ? { sameAs: study.link } : {}),
+    ...(study.testimonial
+      ? {
+          review: {
+            "@type": "Review",
+            reviewBody: study.testimonial.quote,
+            author: { "@type": "Person", name: study.testimonial.author },
+            itemReviewed: { "@type": "Organization", name: "Gotechpluz" },
+          },
+        }
+      : {}),
+  }));
+
+  usePageSEO({
+    title: "Portfolio | Web Design & Digital Marketing Case Studies Ghana - Gotechpluz",
+    description: "Explore Gotechpluz case studies: e-commerce platforms, government portals, healthcare systems, and branding projects delivered across Ghana with measurable results.",
+    canonical: PORTFOLIO_URL,
+    keywords: "web design portfolio Ghana, digital marketing case studies Ghana, website development examples Accra, branding projects Ghana, top-rated web design company Ghana",
+    ogTitle: "Gotechpluz Portfolio — Case Studies from Ghana's Digital Agency",
+    ogDescription: "Real client outcomes across e-commerce, government, healthcare, finance and branding — see the work behind Gotechpluz.",
+    ogImage: portfolioImages.qlickers.img.src,
+    twitterCard: "summary_large_image",
+    structuredData: [organizationSchema, webPageSchema, ...caseStudySchemas],
+  });
 
   const filteredProjects = selectedCategory === "All" 
     ? orderedCaseStudies 
