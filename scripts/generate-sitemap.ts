@@ -4,7 +4,7 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 import { blogArticles } from "../src/data/blog-articles";
 
-const BASE_URL = "https://www.gotechpluz.com";
+const BASE_URL = "https://gotechpluz.com";
 
 interface SitemapEntry {
   path: string;
