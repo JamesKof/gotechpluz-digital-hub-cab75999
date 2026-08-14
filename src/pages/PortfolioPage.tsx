@@ -28,21 +28,27 @@ import {
 } from "lucide-react";
 import ProjectInquiryForm from "@/components/ProjectInquiryForm";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
-import ghanaEximHero from "@/assets/portfolio-ghana-exim.jpg";
-import healthConnectHero from "@/assets/portfolio-health-connect.jpg";
-import transitGatewayHero from "@/assets/portfolio-transit-gateway.jpg";
-import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
-import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
-import prudentialHero from "@/assets/portfolio-prudential.jpg";
-import hogbetsotsoHero from "@/assets/portfolio-hogbetsotso.jpg";
-import paullyRiceHero from "@/assets/portfolio-paully-rice-real.png";
-import emmaldoHero from "@/assets/portfolio-emmaldo-real.jpg";
-import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
-import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
-import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
-import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
-import qlickersShot from "@/assets/portfolio-qlickers.png";
-import stylebyfefShot from "@/assets/portfolio-stylebyfef.png";
+import ResponsiveImage from "@/components/ResponsiveImage";
+import { portfolioImages } from "@/lib/portfolio-images";
+
+const {
+  ghanaExim: ghanaEximHero,
+  healthConnect: healthConnectHero,
+  transitGateway: transitGatewayHero,
+  alorConnect: alorConnectHero,
+  vivaHealth: vivaHealthHero,
+  prudential: prudentialHero,
+  hogbetsotso: hogbetsotsoHero,
+  paullyRice: paullyRiceHero,
+  emmaldo: emmaldoHero,
+  sesiEdem: sesiEdemHero,
+  qlickers: qlickersShot,
+  stylebyfef: stylebyfefShot,
+  socialGunu: socialHogbeGunu,
+  socialPresident: socialHogbePresident,
+  socialInvitation: socialHogbeInvitation,
+} = portfolioImages;
+
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
