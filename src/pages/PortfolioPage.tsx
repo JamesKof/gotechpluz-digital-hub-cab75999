@@ -553,13 +553,16 @@ const PortfolioPage = () => {
                   {study.heroImage && (
                     <div 
                       className="relative h-80 overflow-hidden group cursor-zoom-in"
-                      onClick={() => setLightboxImage(study.heroImage)}
+                      onClick={() => setLightboxImage(study.heroImage.img.src)}
                     >
-                      <img 
-                        src={study.heroImage} 
-                        alt={study.title}
+                      <ResponsiveImage
+                        picture={study.heroImage}
+                        alt={`${study.title} — ${study.client} project by Gotechpluz`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchPriority={index === 0 ? "high" : "auto"}
                         className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                       />
+
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
                         <span className="text-white bg-background/80 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
