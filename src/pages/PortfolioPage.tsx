@@ -428,9 +428,13 @@ const PortfolioPage = () => {
     }
   ];
 
+  // Newest projects first (highest id = most recently added)
+  const orderedCaseStudies = [...caseStudies].sort((a, b) => b.id - a.id);
+
   const filteredProjects = selectedCategory === "All" 
-    ? caseStudies 
-    : caseStudies.filter(study => study.tags.includes(selectedCategory));
+    ? orderedCaseStudies 
+    : orderedCaseStudies.filter(study => study.tags.includes(selectedCategory));
+
 
   const additionalProjects = [
     {
