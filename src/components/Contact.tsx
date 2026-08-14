@@ -124,7 +124,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="text-primary hover:underline font-medium"
                 >
-                  www.gotechpluz.com
+                  gotechpluz.com
                 </a>
               </Card>
             </div>
