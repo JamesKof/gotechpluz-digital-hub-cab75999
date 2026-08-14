@@ -628,8 +628,10 @@ const PortfolioPage = () => {
           return (
             <section 
               key={study.id} 
-              className={`py-20 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'} animate-fade-in`}
+              id={`case-study-${study.id}`}
+              className={`py-20 scroll-mt-24 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'} animate-fade-in`}
             >
+
               <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                 <Card className="overflow-hidden border-border hover:border-primary/30 transition-all duration-300">
