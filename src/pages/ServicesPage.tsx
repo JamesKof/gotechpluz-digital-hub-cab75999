@@ -162,7 +162,7 @@ const ServicesPage = () => {
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link to="/about">
                     <Button className="bg-gradient-accent hover:opacity-90">
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      Learn about our partnership <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                   <Button variant="outline" onClick={openWhatsAppFromServices}>

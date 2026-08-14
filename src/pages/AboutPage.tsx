@@ -69,7 +69,7 @@ const AboutPage = () => {
                       <div className={`w-16 h-16 mx-auto mb-6 ${item.gradient} rounded-2xl flex items-center justify-center`}>
                         <Icon className={`h-8 w-8 ${item.iconClass || "text-white"}`} />
                       </div>
-                      <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                      <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
                       <p className="text-muted-foreground">{item.desc}</p>
                     </Card>
                   </AnimateOnScroll>
