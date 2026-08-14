@@ -23,6 +23,31 @@ const BlogPostPage = () => {
     keywords: article.keywords,
     ogTitle: article.title,
     ogDescription: article.metaDescription,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: article.title,
+        description: article.metaDescription,
+        datePublished: article.date,
+        articleSection: article.category,
+        keywords: article.keywords,
+        author: {
+          "@type": "Person",
+          name: article.author,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Gotechpluz",
+          url: BASE_URL,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${BASE_URL}/blog/${article.slug}`,
+        },
+      },
+    ],
   });
 
   // Get related articles (same category, excluding current)
