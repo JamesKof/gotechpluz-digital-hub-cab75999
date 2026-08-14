@@ -59,10 +59,15 @@ const PortfolioPage = () => {
 
   usePageSEO({
     title: "Portfolio | Web Design & Digital Marketing Case Studies Ghana - Gotechpluz",
-    description: "View Gotechpluz's portfolio of web development, branding, and digital marketing projects in Ghana. Case studies for Ghana EXIM Bank, Ghana Immigration Service, Prudential Insurance, Hogbetsotso Festival, and more.",
+    description: "Explore Gotechpluz case studies: e-commerce platforms, government portals, healthcare systems, and branding projects delivered across Ghana with measurable results.",
     canonical: `${BASE_URL}/portfolio`,
     keywords: "web design portfolio Ghana, digital marketing case studies Ghana, website development examples Accra, branding projects Ghana, top-rated web design company Ghana",
+    ogTitle: "Gotechpluz Portfolio — Case Studies from Ghana's Digital Agency",
+    ogDescription: "Real client outcomes across e-commerce, government, healthcare, finance and branding — see the work behind Gotechpluz.",
+    ogImage: portfolioImages.qlickers.img.src,
+    twitterCard: "summary_large_image",
   });
+
 
   const socialMediaDesigns = [
     {
