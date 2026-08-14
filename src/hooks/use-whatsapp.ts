@@ -16,6 +16,44 @@ const buildWhatsAppUrl = (message: string) => {
 };
 
 /**
+ * Opens WhatsApp reliably from any context (including embedded preview iframes).
+ * 1. window.open in a new tab.
+ * 2. Fallback: synthetic anchor click with target="_blank" (survives some popup blockers).
+ * 3. Last resort: top-level navigation, never same-frame (wa.me refuses to be framed).
+ */
+const navigateToWhatsApp = (url: string) => {
+  if (typeof window === "undefined") return;
+
+  const opened = window.open(url, "_blank", "noopener,noreferrer");
+  if (opened) return;
+
+  try {
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.target = "_blank";
+    anchor.rel = "noopener noreferrer";
+    anchor.style.display = "none";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    return;
+  } catch {
+    // ignore and fall through
+  }
+
+  try {
+    if (window.top && window.top !== window.self) {
+      window.top.location.href = url;
+      return;
+    }
+  } catch {
+    // cross-origin top frame; fall through
+  }
+
+  window.location.href = url;
+};
+
+/**
  * Centralized WhatsApp interaction hook.
  * Provides device-sensitive behavior (mobile app vs WhatsApp Web),
  * toast notifications with call fallback, and analytics tracking.
@@ -59,12 +97,7 @@ export const useWhatsApp = () => {
       description: helper,
     });
 
-    if (typeof window !== "undefined") {
-      const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-      if (!newWindow) {
-        window.location.href = whatsappUrl;
-      }
-    }
+    navigateToWhatsApp(whatsappUrl);
   };
 
   const openWhatsAppUrl = (options: {
@@ -81,12 +114,7 @@ export const useWhatsApp = () => {
       description: helper,
     });
 
-    if (typeof window !== "undefined") {
-      const newWindow = window.open(url, "_blank", "noopener,noreferrer");
-      if (!newWindow) {
-        window.location.href = url;
-      }
-    }
+    navigateToWhatsApp(url);
   };
 
   const helperText = typeof window === "undefined" ? "" : getHelperMessage();

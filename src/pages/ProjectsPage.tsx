@@ -7,15 +7,6 @@ import { useWhatsApp } from "@/hooks/use-whatsapp";
 import { usePageSEO, BASE_URL } from "@/hooks/use-page-seo";
 
 const ProjectsPage = () => {
-  usePageSEO({
-    title: "Our Projects | Web Development & Branding Portfolio - Gotechpluz Ghana",
-    description: "Explore Gotechpluz's projects across web development, mobile apps, branding, and digital marketing in Ghana. Featured work for government institutions, healthcare, agribusiness, and SMEs.",
-    canonical: `${BASE_URL}/projects`,
-    keywords: "web development projects Ghana, branding portfolio Ghana, digital marketing case studies, website design portfolio Accra",
-    ogTitle: "Gotechpluz Projects — Web, Mobile, Branding & Marketing Work in Ghana",
-    ogDescription: "Featured Gotechpluz work for government institutions, healthcare providers, agribusiness and SMEs across Ghana.",
-    twitterCard: "summary_large_image",
-  });
   const { openWhatsApp } = useWhatsApp();
 
   const projects = [
@@ -84,6 +75,60 @@ const ProjectsPage = () => {
       icon: Briefcase
     }
   ];
+
+  const PROJECTS_URL = `${BASE_URL}/projects`;
+
+  const projectSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": `${PROJECTS_URL}#webpage`,
+      url: PROJECTS_URL,
+      name: "Gotechpluz Projects",
+      description:
+        "Featured Gotechpluz work across web development, mobile apps, branding and digital marketing for government institutions, healthcare, agribusiness and SMEs.",
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website`, url: BASE_URL, name: "Gotechpluz" },
+      publisher: { "@id": `${BASE_URL}/#organization` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Projects", item: PROJECTS_URL },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": `${PROJECTS_URL}#projects`,
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": ["CreativeWork", "CaseStudy"],
+          name: project.title,
+          description: project.description,
+          genre: project.category,
+          keywords: project.tech.join(", "),
+          inLanguage: "en",
+          creator: { "@id": `${BASE_URL}/#organization` },
+          ...(project.link ? { url: project.link } : {}),
+        },
+      })),
+    },
+  ];
+
+  usePageSEO({
+    title: "Our Projects | Web Development & Branding Portfolio - Gotechpluz Ghana",
+    description: "Explore Gotechpluz's projects across web development, mobile apps, branding, and digital marketing in Ghana. Featured work for government institutions, healthcare, agribusiness, and SMEs.",
+    canonical: PROJECTS_URL,
+    keywords: "web development projects Ghana, branding portfolio Ghana, digital marketing case studies, website design portfolio Accra",
+    ogTitle: "Gotechpluz Projects — Web, Mobile, Branding & Marketing Work in Ghana",
+    ogDescription: "Featured Gotechpluz work for government institutions, healthcare providers, agribusiness and SMEs across Ghana.",
+    twitterCard: "summary_large_image",
+    structuredData: projectSchemas,
+  });
 
   const handleWhatsAppClick = () => {
     openWhatsApp({

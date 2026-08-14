@@ -33,19 +33,6 @@ const { qlickers: qlickersShot, stylebyfef: stylebyfefShot } = portfolioImages;
 const EcommercePlatformPage = () => {
   const { openWhatsApp } = useWhatsApp();
 
-  usePageSEO({
-    title: "E-commerce Platform Ghana | Storefront, Payments & Admin - Gotechpluz",
-    description:
-      "Gotechpluz's production-ready e-commerce application: storefront, payments, inventory, fulfilment, pickup & drop-off points, custom image orders and analytics in one governed system.",
-    canonical: `${BASE_URL}/ecommerce-platform`,
-    ogTitle: "Gotechpluz E-commerce Platform — Retail, Payments & Fulfilment in One System",
-    ogDescription:
-      "An end-to-end commerce application proven in live client deployments: storefront, Mobile Money and card payments, inventory, pickup points, custom image orders and analytics.",
-    ogImage: qlickersShot.img.src,
-    twitterCard: "summary_large_image",
-    keywords:
-      "e-commerce development Ghana, online store Accra, retail platform Ghana, pickup and drop off delivery, custom image order, admin dashboard e-commerce",
-  });
 
   const capabilities = [
     {
@@ -128,6 +115,89 @@ const EcommercePlatformPage = () => {
       ],
     },
   ];
+
+  const ECOM_URL = `${BASE_URL}/ecommerce-platform`;
+
+  const ecommerceSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "Gotechpluz",
+      url: BASE_URL,
+      logo: `${BASE_URL}/favicon.png`,
+      telephone: "+233247233996",
+      email: "info@gotechpluz.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "La Tebu Cr",
+        addressLocality: "Accra",
+        addressCountry: "GH",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${ECOM_URL}#webpage`,
+      url: ECOM_URL,
+      name: "Gotechpluz E-commerce Platform",
+      description:
+        "End-to-end e-commerce application unifying storefront, payments, inventory, fulfilment, customer engagement and analytics, proven in live client deployments.",
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website`, url: BASE_URL, name: "Gotechpluz" },
+      publisher: { "@id": `${BASE_URL}/#organization` },
+      primaryImageOfPage: `${BASE_URL}${qlickersShot.img.src}`,
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "E-commerce Platform", item: ECOM_URL },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": ["SoftwareApplication", "Product"],
+      "@id": `${ECOM_URL}#product`,
+      name: "Gotechpluz E-commerce Application",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web, iOS, Android",
+      url: ECOM_URL,
+      image: `${BASE_URL}${qlickersShot.img.src}`,
+      description:
+        "Production-ready commerce platform with storefront, Mobile Money and card payments, inventory, pickup and drop-off points, custom image ordering, fulfilment and analytics.",
+      provider: { "@id": `${BASE_URL}/#organization` },
+    },
+    ...deployments.map((d, i) => ({
+      "@context": "https://schema.org",
+      "@type": ["CreativeWork", "CaseStudy"],
+      "@id": `${ECOM_URL}#case-study-${i + 1}`,
+      url: d.url,
+      name: `${d.name} — ${d.tagline}`,
+      abstract: d.tagline,
+      description: d.points.join(" "),
+      image: `${BASE_URL}${d.image.img.src}`,
+      inLanguage: "en",
+      creator: { "@id": `${BASE_URL}/#organization` },
+      mainEntityOfPage: { "@id": `${ECOM_URL}#webpage` },
+      about: { "@type": "Organization", name: d.name, url: d.url },
+    })),
+  ];
+
+  usePageSEO({
+    title: "E-commerce Platform Ghana | Storefront, Payments & Admin - Gotechpluz",
+    description:
+      "Gotechpluz's production-ready e-commerce application: storefront, payments, inventory, fulfilment, pickup & drop-off points, custom image orders and analytics in one governed system.",
+    canonical: ECOM_URL,
+    ogTitle: "Gotechpluz E-commerce Platform — Retail, Payments & Fulfilment in One System",
+    ogDescription:
+      "An end-to-end commerce application proven in live client deployments: storefront, Mobile Money and card payments, inventory, pickup points, custom image orders and analytics.",
+    ogImage: qlickersShot.img.src,
+    twitterCard: "summary_large_image",
+    keywords:
+      "e-commerce development Ghana, online store Accra, retail platform Ghana, pickup and drop off delivery, custom image order, admin dashboard e-commerce",
+    structuredData: ecommerceSchemas,
+  });
 
   const stack = [
     "React",

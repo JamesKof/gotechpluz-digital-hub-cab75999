@@ -11,6 +11,10 @@ interface PageSEOProps {
   /** Absolute or root-relative image path used for OG/Twitter previews. */
   ogImage?: string;
   twitterCard?: "summary" | "summary_large_image";
+  /** JSON-LD objects injected for this route (Organization, WebPage, CaseStudy, ...). */
+  structuredData?: Record<string, unknown>[];
+  /** Emit self-referencing hreflang alternates (en / en-GH / x-default). Default true. */
+  hreflang?: boolean;
 }
 
 const BASE_URL = "https://www.gotechpluz.com";
@@ -35,6 +39,8 @@ export const usePageSEO = ({
   ogType = "website",
   ogImage,
   twitterCard = "summary_large_image",
+  structuredData,
+  hreflang = true,
 }: PageSEOProps) => {
   useEffect(() => {
     // Set document title
@@ -91,6 +97,43 @@ export const usePageSEO = ({
       link.setAttribute("href", absoluteCanonical);
     }
 
+    // hreflang alternates — the site is single-language (English, Ghana-focused).
+    // Self-referencing alternates plus x-default tell Google there is no other
+    // language variant to consolidate, reinforcing the canonical URL.
+    const hreflangLinks: HTMLLinkElement[] = [];
+    if (hreflang && absoluteCanonical) {
+      document
+        .querySelectorAll('link[rel="alternate"][data-page-seo="hreflang"]')
+        .forEach((el) => el.remove());
+
+      ["en", "en-GH", "x-default"].forEach((lang) => {
+        const link = document.createElement("link");
+        link.setAttribute("rel", "alternate");
+        link.setAttribute("hreflang", lang);
+        link.setAttribute("href", absoluteCanonical);
+        link.setAttribute("data-page-seo", "hreflang");
+        document.head.appendChild(link);
+        hreflangLinks.push(link);
+      });
+    }
+
+    // JSON-LD structured data for this route
+    const ldScripts: HTMLScriptElement[] = [];
+    if (structuredData?.length) {
+      document
+        .querySelectorAll('script[type="application/ld+json"][data-page-seo="jsonld"]')
+        .forEach((el) => el.remove());
+
+      structuredData.forEach((schema) => {
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.setAttribute("data-page-seo", "jsonld");
+        script.textContent = JSON.stringify(schema);
+        document.head.appendChild(script);
+        ldScripts.push(script);
+      });
+    }
+
     // Cleanup: reset to defaults when unmounting
     return () => {
       document.title = "Web Development Company in Ghana | Digital Marketing Agency Accra - Gotechpluz";
@@ -99,8 +142,11 @@ export const usePageSEO = ({
 
       const link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
       if (link) link.setAttribute("href", BASE_URL);
+
+      hreflangLinks.forEach((el) => el.remove());
+      ldScripts.forEach((el) => el.remove());
     };
-  }, [title, description, canonical, keywords, ogTitle, ogDescription, ogType, ogImage, twitterCard]);
+  }, [title, description, canonical, keywords, ogTitle, ogDescription, ogType, ogImage, twitterCard, structuredData, hreflang]);
 };
 
 export { BASE_URL };
