@@ -19,4 +19,4 @@ Allow: /portfolio
 Allow: /projects
 Allow: /ecommerce-platform
 
-Sitemap: https://www.gotechpluz.com/sitemap.xml
+Sitemap: https://gotechpluz.com/sitemap.xml

@@ -119,7 +119,7 @@ const Contact = () => {
               <Card className="p-6 bg-gradient-hero border-primary/20 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
                 <h3 className="font-bold mb-3">Website</h3>
                 <a 
-                  href="https://www.gotechpluz.com" 
+                  href="https://gotechpluz.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline font-medium"

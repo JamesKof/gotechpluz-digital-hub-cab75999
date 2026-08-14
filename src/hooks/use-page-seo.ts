@@ -17,7 +17,7 @@ interface PageSEOProps {
   hreflang?: boolean;
 }
 
-const BASE_URL = "https://www.gotechpluz.com";
+const BASE_URL = "https://gotechpluz.com";
 
 const toAbsolute = (url?: string) => {
   if (!url) return undefined;
