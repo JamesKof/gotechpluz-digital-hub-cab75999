@@ -27,6 +27,7 @@ import emmaldo from "@/assets/portfolio-emmaldo-real.jpg?w=480;768;1200;1600&for
 import sesiEdem from "@/assets/portfolio-sesi-edem.jpg?w=480;768;1200;1600&format=avif;webp;jpg&as=picture&quality=72";
 import qlickers from "@/assets/portfolio-qlickers.png?w=480;768;1200;1600&format=avif;webp;png&as=picture&quality=72";
 import stylebyfef from "@/assets/portfolio-stylebyfef.png?w=480;768;1200;1600&format=avif;webp;png&as=picture&quality=72";
+import uewg from "@/assets/portfolio-uewg.jpg?w=480;768;1200;1600&format=avif;webp;jpg&as=picture&quality=72";
 import socialGunu from "@/assets/social-hogbe-gunu.jpg?w=480;768;1200&format=avif;webp;jpg&as=picture&quality=72";
 import socialPresident from "@/assets/social-hogbe-president.jpg?w=480;768;1200&format=avif;webp;jpg&as=picture&quality=72";
 import socialInvitation from "@/assets/social-hogbe-invitation.jpg?w=480;768;1200&format=avif;webp;jpg&as=picture&quality=72";
@@ -44,6 +45,7 @@ export const portfolioImages = {
   sesiEdem: sesiEdem as PictureSource,
   qlickers: qlickers as PictureSource,
   stylebyfef: stylebyfef as PictureSource,
+  uewg: uewg as PictureSource,
   socialGunu: socialGunu as PictureSource,
   socialPresident: socialPresident as PictureSource,
   socialInvitation: socialInvitation as PictureSource,
