@@ -12,6 +12,9 @@ const ProjectsPage = () => {
     description: "Explore Gotechpluz's projects across web development, mobile apps, branding, and digital marketing in Ghana. Featured work for government institutions, healthcare, agribusiness, and SMEs.",
     canonical: `${BASE_URL}/projects`,
     keywords: "web development projects Ghana, branding portfolio Ghana, digital marketing case studies, website design portfolio Accra",
+    ogTitle: "Gotechpluz Projects — Web, Mobile, Branding & Marketing Work in Ghana",
+    ogDescription: "Featured Gotechpluz work for government institutions, healthcare providers, agribusiness and SMEs across Ghana.",
+    twitterCard: "summary_large_image",
   });
   const { openWhatsApp } = useWhatsApp();
 

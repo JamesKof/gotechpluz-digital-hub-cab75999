@@ -25,8 +25,10 @@ import {
   MessageCircle,
   CalendarCheck,
 } from "lucide-react";
-import qlickersShot from "@/assets/portfolio-qlickers.png";
-import stylebyfefShot from "@/assets/portfolio-stylebyfef.png";
+import ResponsiveImage from "@/components/ResponsiveImage";
+import { portfolioImages } from "@/lib/portfolio-images";
+
+const { qlickers: qlickersShot, stylebyfef: stylebyfefShot } = portfolioImages;
 
 const EcommercePlatformPage = () => {
   const { openWhatsApp } = useWhatsApp();
@@ -36,6 +38,11 @@ const EcommercePlatformPage = () => {
     description:
       "Gotechpluz's production-ready e-commerce application: storefront, payments, inventory, fulfilment, pickup & drop-off points, custom image orders and analytics in one governed system.",
     canonical: `${BASE_URL}/ecommerce-platform`,
+    ogTitle: "Gotechpluz E-commerce Platform — Retail, Payments & Fulfilment in One System",
+    ogDescription:
+      "An end-to-end commerce application proven in live client deployments: storefront, Mobile Money and card payments, inventory, pickup points, custom image orders and analytics.",
+    ogImage: qlickersShot.img.src,
+    twitterCard: "summary_large_image",
     keywords:
       "e-commerce development Ghana, online store Accra, retail platform Ghana, pickup and drop off delivery, custom image order, admin dashboard e-commerce",
   });
@@ -306,10 +313,10 @@ const EcommercePlatformPage = () => {
                       rel="noopener noreferrer"
                       className="block relative h-60 overflow-hidden group"
                     >
-                      <img
-                        src={d.image}
+                      <ResponsiveImage
+                        picture={d.image}
                         alt={`${d.name} e-commerce storefront built by Gotechpluz`}
-                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
                     </a>
