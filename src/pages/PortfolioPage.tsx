@@ -446,32 +446,6 @@ const PortfolioPage = () => {
       addressLocality: "Accra",
       addressCountry: "GH",
     },
-    {
-      id: 13,
-      title: "Unique Empowered Women Global – NGO Digital Presence",
-      client: "Unique Empowered Women Global (UEWG)",
-      category: "Non-Profit",
-      tags: ["Web Development", "Non-Profit", "Branding"],
-      link: "https://uniqueempoweredwomenglobal.org/",
-      description: "Mission-driven website for a Ghana-based NGO empowering women, girls, and children through education, health advocacy, leadership development, and faith-rooted humanitarian outreach.",
-      challenge: "Founded in November 2024, UEWG needed instant credibility online: a place to tell its story, publish its five pillars and four programs, prove impact with real photography, and convert visitors into donors and volunteers.",
-      solution: "We designed and built a warm, editorial nonprofit site with a photo-led hero, mission pillars, program pages, an impact section with live metrics, a community gallery, and always-visible Donate and Volunteer journeys backed by simple, mobile-first forms.",
-      results: [
-        { metric: "3", label: "Orphanages supported" },
-        { metric: "4+", label: "Church & school partners" },
-        { metric: "5", label: "Program pillars published" },
-        { metric: "2", label: "Primary conversion paths (donate, volunteer)" }
-      ],
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "SEO", "Donation & Volunteer Funnels"],
-      heroImage: uewgHero,
-      testimonial: {
-        quote: "Our website now carries the heart of our mission. Supporters understand who we are in seconds, and volunteers and donors reach us without friction.",
-        author: "Founder",
-        company: "Unique Empowered Women Global"
-      },
-      icon: Heart,
-      color: "from-purple-700 to-amber-500"
-    },
     areaServed: ["Ghana", "Worldwide"],
   };
 
