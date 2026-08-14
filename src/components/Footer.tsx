@@ -90,7 +90,16 @@ const Footer = () => {
 
           <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
             <p>© {currentYear} Gotechpluz. All rights reserved.</p>
+            <p className="mt-2">
+              <a
+                href="/sitemap.xml"
+                className="hover:text-primary transition-colors underline underline-offset-4"
+              >
+                Sitemap
+              </a>
+            </p>
           </div>
+
         </div>
       </div>
     </footer>
