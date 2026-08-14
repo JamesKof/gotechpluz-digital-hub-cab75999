@@ -28,21 +28,27 @@ import {
 } from "lucide-react";
 import ProjectInquiryForm from "@/components/ProjectInquiryForm";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
-import ghanaEximHero from "@/assets/portfolio-ghana-exim.jpg";
-import healthConnectHero from "@/assets/portfolio-health-connect.jpg";
-import transitGatewayHero from "@/assets/portfolio-transit-gateway.jpg";
-import alorConnectHero from "@/assets/portfolio-alor-connect.jpg";
-import vivaHealthHero from "@/assets/portfolio-viva-health.jpg";
-import prudentialHero from "@/assets/portfolio-prudential.jpg";
-import hogbetsotsoHero from "@/assets/portfolio-hogbetsotso.jpg";
-import paullyRiceHero from "@/assets/portfolio-paully-rice-real.png";
-import emmaldoHero from "@/assets/portfolio-emmaldo-real.jpg";
-import sesiEdemHero from "@/assets/portfolio-sesi-edem.jpg";
-import socialHogbeGunu from "@/assets/social-hogbe-gunu.jpg";
-import socialHogbePresident from "@/assets/social-hogbe-president.jpg";
-import socialHogbeInvitation from "@/assets/social-hogbe-invitation.jpg";
-import qlickersShot from "@/assets/portfolio-qlickers.png";
-import stylebyfefShot from "@/assets/portfolio-stylebyfef.png";
+import ResponsiveImage from "@/components/ResponsiveImage";
+import { portfolioImages } from "@/lib/portfolio-images";
+
+const {
+  ghanaExim: ghanaEximHero,
+  healthConnect: healthConnectHero,
+  transitGateway: transitGatewayHero,
+  alorConnect: alorConnectHero,
+  vivaHealth: vivaHealthHero,
+  prudential: prudentialHero,
+  hogbetsotso: hogbetsotsoHero,
+  paullyRice: paullyRiceHero,
+  emmaldo: emmaldoHero,
+  sesiEdem: sesiEdemHero,
+  qlickers: qlickersShot,
+  stylebyfef: stylebyfefShot,
+  socialGunu: socialHogbeGunu,
+  socialPresident: socialHogbePresident,
+  socialInvitation: socialHogbeInvitation,
+} = portfolioImages;
+
 import { useWhatsApp } from "@/hooks/use-whatsapp";
 
 const PortfolioPage = () => {
@@ -53,10 +59,15 @@ const PortfolioPage = () => {
 
   usePageSEO({
     title: "Portfolio | Web Design & Digital Marketing Case Studies Ghana - Gotechpluz",
-    description: "View Gotechpluz's portfolio of web development, branding, and digital marketing projects in Ghana. Case studies for Ghana EXIM Bank, Ghana Immigration Service, Prudential Insurance, Hogbetsotso Festival, and more.",
+    description: "Explore Gotechpluz case studies: e-commerce platforms, government portals, healthcare systems, and branding projects delivered across Ghana with measurable results.",
     canonical: `${BASE_URL}/portfolio`,
     keywords: "web design portfolio Ghana, digital marketing case studies Ghana, website development examples Accra, branding projects Ghana, top-rated web design company Ghana",
+    ogTitle: "Gotechpluz Portfolio — Case Studies from Ghana's Digital Agency",
+    ogDescription: "Real client outcomes across e-commerce, government, healthcare, finance and branding — see the work behind Gotechpluz.",
+    ogImage: portfolioImages.qlickers.img.src,
+    twitterCard: "summary_large_image",
   });
+
 
   const socialMediaDesigns = [
     {
@@ -422,9 +433,13 @@ const PortfolioPage = () => {
     }
   ];
 
+  // Newest projects first (highest id = most recently added)
+  const orderedCaseStudies = [...caseStudies].sort((a, b) => b.id - a.id);
+
   const filteredProjects = selectedCategory === "All" 
-    ? caseStudies 
-    : caseStudies.filter(study => study.tags.includes(selectedCategory));
+    ? orderedCaseStudies 
+    : orderedCaseStudies.filter(study => study.tags.includes(selectedCategory));
+
 
   const additionalProjects = [
     {
@@ -547,13 +562,16 @@ const PortfolioPage = () => {
                   {study.heroImage && (
                     <div 
                       className="relative h-80 overflow-hidden group cursor-zoom-in"
-                      onClick={() => setLightboxImage(study.heroImage)}
+                      onClick={() => setLightboxImage(study.heroImage.img.src)}
                     >
-                      <img 
-                        src={study.heroImage} 
-                        alt={study.title}
+                      <ResponsiveImage
+                        picture={study.heroImage}
+                        alt={`${study.title} — ${study.client} project by Gotechpluz`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchPriority={index === 0 ? "high" : "auto"}
                         className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                       />
+
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
                         <span className="text-white bg-background/80 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
@@ -707,14 +725,16 @@ const PortfolioPage = () => {
                   key={design.id}
                   className="overflow-hidden border-border hover:border-accent/50 transition-all duration-300 group cursor-zoom-in animate-fade-in"
                   style={{ animationDelay: `${index * 0.15}s` }}
-                  onClick={() => setLightboxImage(design.image)}
+                  onClick={() => setLightboxImage(design.image.img.src)}
                 >
                   <div className="relative aspect-square overflow-hidden">
-                    <img 
-                      src={design.image} 
-                      alt={design.title}
+                    <ResponsiveImage
+                      picture={design.image}
+                      alt={`${design.title} — ${design.client} design by Gotechpluz`}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
                     <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-300 flex items-center justify-center">
                       <span className="text-white bg-background/80 px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
