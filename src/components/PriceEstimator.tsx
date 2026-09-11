@@ -44,7 +44,99 @@ const PriceEstimator = () => {
   const [extraPages, setExtraPages] = useState(0);
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [estimateId, setEstimateId] = useState<string | null>(null);
+  const [payingOption, setPayingOption] = useState<"deposit" | "full" | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [receipt, setReceipt] = useState<{
+    amount: number;
+    total: number;
+    option: string;
+    reference: string;
+    channel: string;
+  } | null>(null);
   const pkg = packages.find((p) => p.id === selectedPkg) ?? null;
+
+  // When Paystack sends the client back, confirm the payment and show a receipt.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get("reference") ?? params.get("trxref");
+    if (!reference) return;
+
+    const clearQuery = () =>
+      window.history.replaceState({}, "", window.location.pathname);
+
+    setIsVerifying(true);
+    setStep("invoice");
+    supabase.functions
+      .invoke("paystack-verify", { body: { reference } })
+      .then(({ data, error }) => {
+        if (error) throw error;
+        if (data?.paid) {
+          setReceipt({
+            amount: data.amount,
+            total: data.total,
+            option: data.option,
+            reference: data.reference,
+            channel: data.channel,
+          });
+          toast({
+            title: "✅ Payment received",
+            description: `Your receipt has been emailed to you. Reference ${data.reference}.`,
+          });
+        } else {
+          toast({
+            title: "Payment not completed",
+            description: data?.gatewayMessage ?? "The payment was not completed. You can try again.",
+            variant: "destructive",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error("Payment verification error:", err);
+        toast({
+          title: "Could not confirm payment",
+          description: "If you were charged, message us on WhatsApp at 024 723 3996 and we'll confirm it.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsVerifying(false);
+        clearQuery();
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handlePay = async (option: "deposit" | "full") => {
+    if (!estimateId) {
+      toast({
+        title: "Send your estimate first",
+        description: "Send the estimate so we can generate your invoice, then pay.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setPayingOption(option);
+    try {
+      const { data, error } = await supabase.functions.invoke("paystack-initialize", {
+        body: {
+          estimateId,
+          option,
+          callbackUrl: `${window.location.origin}${window.location.pathname}`,
+        },
+      });
+      if (error) throw error;
+      if (!data?.authorizationUrl) throw new Error(data?.error ?? "No checkout link returned");
+      window.location.href = data.authorizationUrl;
+    } catch (err: any) {
+      console.error("Paystack initialize error:", err);
+      toast({
+        title: "Could not open checkout",
+        description: "Please try again, or pay via WhatsApp on 024 723 3996.",
+        variant: "destructive",
+      });
+      setPayingOption(null);
+    }
+  };
 
   const packagePrice = useMemo(() => {
     if (!pkg) return 0;
