@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { packages, addOns, formatGHS, type Package, type AddOn } from "@/data/pricing-data";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -25,6 +25,8 @@ import {
   Mail,
   Loader2,
   CheckCircle2,
+  CreditCard,
+  ShieldCheck,
 } from "lucide-react";
 
 type Step = "package" | "addons" | "details" | "invoice";
