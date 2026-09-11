@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/gotechpluz-logo.png";
 import { useWhatsApp } from "@/hooks/use-whatsapp";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const QUESTIONNAIRE_URL = "https://forms.gle/YVXpRizgtv7GLcYs5";
 
@@ -108,6 +109,8 @@ const Navigation = () => {
                 Questionnaire
               </a>
 
+              <LanguageSwitcher />
+
               <Button
                 type="button"
                 size="sm"
@@ -185,6 +188,8 @@ const Navigation = () => {
                 </a>
 
                 <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-2" />
+
+                <LanguageSwitcher variant="full" onSelect={() => setIsOpen(false)} />
 
                 <Button
                   type="button"

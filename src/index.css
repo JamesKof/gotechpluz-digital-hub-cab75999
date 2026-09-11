@@ -172,3 +172,25 @@ All colors MUST be HSL.
     transform: translateY(0);
   }
 }
+
+/* --- Site translation widget (Google) : hide its chrome, keep our own switcher --- */
+.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}

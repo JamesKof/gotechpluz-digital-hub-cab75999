@@ -25,6 +25,7 @@ import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import MobileContactBar from "./components/MobileContactBar";
 import FloatingReviewWidget from "./components/FloatingReviewWidget";
+import TranslateProvider from "./components/TranslateProvider";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <TranslateProvider />
       <BrowserRouter>
         <AnalyticsListener />
         <FloatingWhatsAppButton />
