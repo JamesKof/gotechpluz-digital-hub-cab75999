@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { packages, addOns, formatGHS, type Package, type AddOn } from "@/data/pricing-data";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -25,6 +25,8 @@ import {
   Mail,
   Loader2,
   CheckCircle2,
+  CreditCard,
+  ShieldCheck,
 } from "lucide-react";
 
 type Step = "package" | "addons" | "details" | "invoice";
@@ -42,7 +44,99 @@ const PriceEstimator = () => {
   const [extraPages, setExtraPages] = useState(0);
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [estimateId, setEstimateId] = useState<string | null>(null);
+  const [payingOption, setPayingOption] = useState<"deposit" | "full" | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [receipt, setReceipt] = useState<{
+    amount: number;
+    total: number;
+    option: string;
+    reference: string;
+    channel: string;
+  } | null>(null);
   const pkg = packages.find((p) => p.id === selectedPkg) ?? null;
+
+  // When Paystack sends the client back, confirm the payment and show a receipt.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get("reference") ?? params.get("trxref");
+    if (!reference) return;
+
+    const clearQuery = () =>
+      window.history.replaceState({}, "", window.location.pathname);
+
+    setIsVerifying(true);
+    setStep("invoice");
+    supabase.functions
+      .invoke("paystack-verify", { body: { reference } })
+      .then(({ data, error }) => {
+        if (error) throw error;
+        if (data?.paid) {
+          setReceipt({
+            amount: data.amount,
+            total: data.total,
+            option: data.option,
+            reference: data.reference,
+            channel: data.channel,
+          });
+          toast({
+            title: "✅ Payment received",
+            description: `Your receipt has been emailed to you. Reference ${data.reference}.`,
+          });
+        } else {
+          toast({
+            title: "Payment not completed",
+            description: data?.gatewayMessage ?? "The payment was not completed. You can try again.",
+            variant: "destructive",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error("Payment verification error:", err);
+        toast({
+          title: "Could not confirm payment",
+          description: "If you were charged, message us on WhatsApp at 024 723 3996 and we'll confirm it.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsVerifying(false);
+        clearQuery();
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handlePay = async (option: "deposit" | "full") => {
+    if (!estimateId) {
+      toast({
+        title: "Send your estimate first",
+        description: "Send the estimate so we can generate your invoice, then pay.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setPayingOption(option);
+    try {
+      const { data, error } = await supabase.functions.invoke("paystack-initialize", {
+        body: {
+          estimateId,
+          option,
+          callbackUrl: `${window.location.origin}${window.location.pathname}`,
+        },
+      });
+      if (error) throw error;
+      if (!data?.authorizationUrl) throw new Error(data?.error ?? "No checkout link returned");
+      window.location.href = data.authorizationUrl;
+    } catch (err: any) {
+      console.error("Paystack initialize error:", err);
+      toast({
+        title: "Could not open checkout",
+        description: "Please try again, or pay via WhatsApp on 024 723 3996.",
+        variant: "destructive",
+      });
+      setPayingOption(null);
+    }
+  };
 
   const packagePrice = useMemo(() => {
     if (!pkg) return 0;
@@ -153,6 +247,8 @@ const PriceEstimator = () => {
       });
 
       if (error) throw error;
+
+      if (data?.estimateId) setEstimateId(data.estimateId);
 
       // 2. Share via WhatsApp
       openWhatsApp({
@@ -560,6 +656,85 @@ const PriceEstimator = () => {
             </div>
           )}
 
+          {/* Payment */}
+          {isVerifying && (
+            <Card className="p-6 flex items-center gap-3">
+              <Loader2 className="h-5 w-5 animate-spin text-primary" />
+              <p className="text-sm">Confirming your payment…</p>
+            </Card>
+          )}
+
+          {receipt && (
+            <Card className="p-6 border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-900">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="h-6 w-6 text-green-600" />
+                <h3 className="font-semibold text-green-800 dark:text-green-400">
+                  Payment Received — {formatGHS(receipt.amount)}
+                </h3>
+              </div>
+              <div className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                <p>
+                  {receipt.option === "deposit" ? "50% deposit" : "Full payment"} paid via{" "}
+                  {receipt.channel}.
+                </p>
+                {receipt.total - receipt.amount > 0 && (
+                  <p>
+                    Outstanding balance:{" "}
+                    <strong>{formatGHS(receipt.total - receipt.amount)}</strong> (due on completion)
+                  </p>
+                )}
+                <p>📧 A receipt has been emailed to you and to our team.</p>
+                <p className="text-xs opacity-80">Reference: {receipt.reference}</p>
+              </div>
+            </Card>
+          )}
+
+          {isSent && !receipt && !isVerifying && (
+            <Card className="p-6">
+              <div className="flex items-center gap-2 mb-1">
+                <CreditCard className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold">Pay for this project</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Pay securely with Mobile Money, card or bank transfer. Choose a 50% deposit to get
+                started, or settle the full amount.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button
+                  size="lg"
+                  className="flex-1 bg-gradient-primary hover:opacity-90"
+                  disabled={payingOption !== null}
+                  onClick={() => handlePay("deposit")}
+                >
+                  {payingOption === "deposit" ? (
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  ) : (
+                    <CreditCard className="h-4 w-4 mr-2" />
+                  )}
+                  Pay 50% Deposit — {formatGHS(Math.round(grandTotal * 0.5))}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="flex-1"
+                  disabled={payingOption !== null}
+                  onClick={() => handlePay("full")}
+                >
+                  {payingOption === "full" ? (
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  ) : (
+                    <CreditCard className="h-4 w-4 mr-2" />
+                  )}
+                  Pay in Full — {formatGHS(grandTotal)}
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Payments are processed securely by Paystack. Your receipt is emailed instantly.
+              </p>
+            </Card>
+          )}
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
               onClick={handleSendEstimate}
@@ -597,6 +772,9 @@ const PriceEstimator = () => {
                 setExtraPages(0);
                 setComplexitySlider(50);
                 setIsSent(false);
+                setEstimateId(null);
+                setReceipt(null);
+                setPayingOption(null);
               }}
             >
               Start Over
