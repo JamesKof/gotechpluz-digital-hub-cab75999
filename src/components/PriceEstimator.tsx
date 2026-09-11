@@ -772,6 +772,9 @@ const PriceEstimator = () => {
                 setExtraPages(0);
                 setComplexitySlider(50);
                 setIsSent(false);
+                setEstimateId(null);
+                setReceipt(null);
+                setPayingOption(null);
               }}
             >
               Start Over
