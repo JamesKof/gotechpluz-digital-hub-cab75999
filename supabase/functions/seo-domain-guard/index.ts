@@ -79,14 +79,16 @@ const runChecks = async (): Promise<CheckResult[]> => {
     checks.push({ name: "homepage canonical", ok: false, detail: `fetch failed: ${e}` });
   }
 
-  // 4. Apex host must permanently redirect to www.
+  // 4. Apex host must land on the www host (permanent redirect).
   try {
-    const res = await fetch(`${APEX_HOST}/`, { redirect: "manual" });
-    const location = res.headers.get("location") ?? "";
+    const res = await fetch(`${APEX_HOST}/`, { redirect: "follow" });
+    const landedOnWww = res.url.startsWith(CANONICAL_HOST);
     checks.push({
       name: "apex redirect",
-      ok: [301, 308].includes(res.status) && location.startsWith(CANONICAL_HOST),
-      detail: `HTTP ${res.status}${location ? ` -> ${location}` : " (no redirect)"}`,
+      ok: landedOnWww,
+      detail: landedOnWww
+        ? `apex resolves to ${res.url} (HTTP ${res.status})`
+        : `apex stayed on ${res.url} (HTTP ${res.status}) instead of ${CANONICAL_HOST}`,
     });
   } catch (e) {
     checks.push({ name: "apex redirect", ok: false, detail: `fetch failed: ${e}` });
