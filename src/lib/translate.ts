@@ -88,6 +88,14 @@ const COUNTRY_LANGUAGE_MAP: Record<string, string> = {
   SA: "ar", AE: "ar", EG: "ar", MA: "ar", DZ: "ar", TN: "ar", LY: "ar", JO: "ar",
   QA: "ar", KW: "ar", BH: "ar", OM: "ar", IQ: "ar", LB: "ar", YE: "ar", SD: "ar",
   SY: "ar", PS: "ar", MR: "ar",
+  // African languages
+  RW: "rw", BI: "rw",
+  TZ: "sw", KE: "sw", UG: "sw",
+  ET: "am", SO: "so", ZA: "af", ZW: "sn", MW: "ny", MG: "mg",
+  // Other world languages
+  IT: "it", NL: "nl", RU: "ru", BY: "ru", KZ: "ru", TR: "tr", PL: "pl",
+  SE: "sv", IN: "hi", BD: "bn", PK: "ur", IR: "fa", IL: "he",
+  JP: "ja", KR: "ko", ID: "id", MY: "ms", VN: "vi", TH: "th",
 };
 
 export const getLanguageByCode = (code: string) =>
