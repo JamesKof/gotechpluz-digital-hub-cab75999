@@ -248,6 +248,8 @@ const PriceEstimator = () => {
 
       if (error) throw error;
 
+      if (data?.estimateId) setEstimateId(data.estimateId);
+
       // 2. Share via WhatsApp
       openWhatsApp({
         source: "price_estimator",
