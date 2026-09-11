@@ -16,6 +16,8 @@ export type Database = {
     Tables: {
       estimates: {
         Row: {
+          amount_due: number | null
+          amount_paid: number
           client_email: string
           client_name: string
           created_at: string
@@ -24,10 +26,17 @@ export type Database = {
           id: string
           line_items: Json
           package_name: string
+          paid_at: string | null
+          payment_channel: string | null
+          payment_option: string | null
+          payment_reference: string | null
+          payment_status: string
           status: string
           updated_at: string
         }
         Insert: {
+          amount_due?: number | null
+          amount_paid?: number
           client_email?: string
           client_name?: string
           created_at?: string
@@ -36,10 +45,17 @@ export type Database = {
           id?: string
           line_items?: Json
           package_name?: string
+          paid_at?: string | null
+          payment_channel?: string | null
+          payment_option?: string | null
+          payment_reference?: string | null
+          payment_status?: string
           status?: string
           updated_at?: string
         }
         Update: {
+          amount_due?: number | null
+          amount_paid?: number
           client_email?: string
           client_name?: string
           created_at?: string
@@ -48,6 +64,11 @@ export type Database = {
           id?: string
           line_items?: Json
           package_name?: string
+          paid_at?: string | null
+          payment_channel?: string | null
+          payment_option?: string | null
+          payment_reference?: string | null
+          payment_status?: string
           status?: string
           updated_at?: string
         }
