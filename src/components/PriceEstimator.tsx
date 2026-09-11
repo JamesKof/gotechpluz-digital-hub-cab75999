@@ -656,6 +656,85 @@ const PriceEstimator = () => {
             </div>
           )}
 
+          {/* Payment */}
+          {isVerifying && (
+            <Card className="p-6 flex items-center gap-3">
+              <Loader2 className="h-5 w-5 animate-spin text-primary" />
+              <p className="text-sm">Confirming your payment…</p>
+            </Card>
+          )}
+
+          {receipt && (
+            <Card className="p-6 border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-900">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="h-6 w-6 text-green-600" />
+                <h3 className="font-semibold text-green-800 dark:text-green-400">
+                  Payment Received — {formatGHS(receipt.amount)}
+                </h3>
+              </div>
+              <div className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                <p>
+                  {receipt.option === "deposit" ? "50% deposit" : "Full payment"} paid via{" "}
+                  {receipt.channel}.
+                </p>
+                {receipt.total - receipt.amount > 0 && (
+                  <p>
+                    Outstanding balance:{" "}
+                    <strong>{formatGHS(receipt.total - receipt.amount)}</strong> (due on completion)
+                  </p>
+                )}
+                <p>📧 A receipt has been emailed to you and to our team.</p>
+                <p className="text-xs opacity-80">Reference: {receipt.reference}</p>
+              </div>
+            </Card>
+          )}
+
+          {isSent && !receipt && !isVerifying && (
+            <Card className="p-6">
+              <div className="flex items-center gap-2 mb-1">
+                <CreditCard className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold">Pay for this project</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Pay securely with Mobile Money, card or bank transfer. Choose a 50% deposit to get
+                started, or settle the full amount.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button
+                  size="lg"
+                  className="flex-1 bg-gradient-primary hover:opacity-90"
+                  disabled={payingOption !== null}
+                  onClick={() => handlePay("deposit")}
+                >
+                  {payingOption === "deposit" ? (
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  ) : (
+                    <CreditCard className="h-4 w-4 mr-2" />
+                  )}
+                  Pay 50% Deposit — {formatGHS(Math.round(grandTotal * 0.5))}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="flex-1"
+                  disabled={payingOption !== null}
+                  onClick={() => handlePay("full")}
+                >
+                  {payingOption === "full" ? (
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  ) : (
+                    <CreditCard className="h-4 w-4 mr-2" />
+                  )}
+                  Pay in Full — {formatGHS(grandTotal)}
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Payments are processed securely by Paystack. Your receipt is emailed instantly.
+              </p>
+            </Card>
+          )}
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
               onClick={handleSendEstimate}
