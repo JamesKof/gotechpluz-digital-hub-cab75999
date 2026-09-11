@@ -53,6 +53,30 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_domain_checks: {
+        Row: {
+          checked_at: string
+          checks: Json
+          failure_count: number
+          id: string
+          status: string
+        }
+        Insert: {
+          checked_at?: string
+          checks?: Json
+          failure_count?: number
+          id?: string
+          status: string
+        }
+        Update: {
+          checked_at?: string
+          checks?: Json
+          failure_count?: number
+          id?: string
+          status?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
