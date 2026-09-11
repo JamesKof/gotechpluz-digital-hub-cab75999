@@ -10,17 +10,58 @@ export interface LanguageOption {
   nativeLabel: string;
   short: string;
   rtl?: boolean;
+  group: "Popular" | "African" | "World";
 }
 
 export const LANGUAGES: LanguageOption[] = [
-  { code: "en", label: "English", nativeLabel: "English", short: "EN" },
-  { code: "fr", label: "French", nativeLabel: "Français", short: "FR" },
-  { code: "es", label: "Spanish", nativeLabel: "Español", short: "ES" },
-  { code: "pt", label: "Portuguese", nativeLabel: "Português", short: "PT" },
-  { code: "de", label: "German", nativeLabel: "Deutsch", short: "DE" },
-  { code: "zh-CN", label: "Chinese", nativeLabel: "中文", short: "ZH" },
-  { code: "ar", label: "Arabic", nativeLabel: "العربية", short: "AR", rtl: true },
+  { code: "en", label: "English", nativeLabel: "English", short: "EN", group: "Popular" },
+  { code: "fr", label: "French", nativeLabel: "Français", short: "FR", group: "Popular" },
+  { code: "es", label: "Spanish", nativeLabel: "Español", short: "ES", group: "Popular" },
+  { code: "pt", label: "Portuguese", nativeLabel: "Português", short: "PT", group: "Popular" },
+  { code: "ar", label: "Arabic", nativeLabel: "العربية", short: "AR", rtl: true, group: "Popular" },
+  { code: "zh-CN", label: "Chinese (Simplified)", nativeLabel: "简体中文", short: "ZH", group: "Popular" },
+
+  // African languages
+  { code: "ee", label: "Ewe", nativeLabel: "Eʋegbe", short: "EE", group: "African" },
+  { code: "ak", label: "Twi (Akan)", nativeLabel: "Twi", short: "AK", group: "African" },
+  { code: "rw", label: "Kinyarwanda", nativeLabel: "Ikinyarwanda", short: "RW", group: "African" },
+  { code: "sw", label: "Swahili", nativeLabel: "Kiswahili", short: "SW", group: "African" },
+  { code: "ha", label: "Hausa", nativeLabel: "Hausa", short: "HA", group: "African" },
+  { code: "yo", label: "Yoruba", nativeLabel: "Yorùbá", short: "YO", group: "African" },
+  { code: "ig", label: "Igbo", nativeLabel: "Igbo", short: "IG", group: "African" },
+  { code: "am", label: "Amharic", nativeLabel: "አማርኛ", short: "AM", group: "African" },
+  { code: "so", label: "Somali", nativeLabel: "Soomaali", short: "SO", group: "African" },
+  { code: "zu", label: "Zulu", nativeLabel: "isiZulu", short: "ZU", group: "African" },
+  { code: "xh", label: "Xhosa", nativeLabel: "isiXhosa", short: "XH", group: "African" },
+  { code: "af", label: "Afrikaans", nativeLabel: "Afrikaans", short: "AF", group: "African" },
+  { code: "sn", label: "Shona", nativeLabel: "chiShona", short: "SN", group: "African" },
+  { code: "ny", label: "Chichewa", nativeLabel: "Chichewa", short: "NY", group: "African" },
+  { code: "lg", label: "Luganda", nativeLabel: "Luganda", short: "LG", group: "African" },
+  { code: "wo", label: "Wolof", nativeLabel: "Wolof", short: "WO", group: "African" },
+  { code: "mg", label: "Malagasy", nativeLabel: "Malagasy", short: "MG", group: "African" },
+
+  // Other world languages
+  { code: "de", label: "German", nativeLabel: "Deutsch", short: "DE", group: "World" },
+  { code: "it", label: "Italian", nativeLabel: "Italiano", short: "IT", group: "World" },
+  { code: "nl", label: "Dutch", nativeLabel: "Nederlands", short: "NL", group: "World" },
+  { code: "ru", label: "Russian", nativeLabel: "Русский", short: "RU", group: "World" },
+  { code: "tr", label: "Turkish", nativeLabel: "Türkçe", short: "TR", group: "World" },
+  { code: "pl", label: "Polish", nativeLabel: "Polski", short: "PL", group: "World" },
+  { code: "sv", label: "Swedish", nativeLabel: "Svenska", short: "SV", group: "World" },
+  { code: "hi", label: "Hindi", nativeLabel: "हिन्दी", short: "HI", group: "World" },
+  { code: "bn", label: "Bengali", nativeLabel: "বাংলা", short: "BN", group: "World" },
+  { code: "ur", label: "Urdu", nativeLabel: "اردو", short: "UR", rtl: true, group: "World" },
+  { code: "fa", label: "Persian", nativeLabel: "فارسی", short: "FA", rtl: true, group: "World" },
+  { code: "he", label: "Hebrew", nativeLabel: "עברית", short: "HE", rtl: true, group: "World" },
+  { code: "ja", label: "Japanese", nativeLabel: "日本語", short: "JA", group: "World" },
+  { code: "ko", label: "Korean", nativeLabel: "한국어", short: "KO", group: "World" },
+  { code: "id", label: "Indonesian", nativeLabel: "Bahasa Indonesia", short: "ID", group: "World" },
+  { code: "ms", label: "Malay", nativeLabel: "Bahasa Melayu", short: "MS", group: "World" },
+  { code: "vi", label: "Vietnamese", nativeLabel: "Tiếng Việt", short: "VI", group: "World" },
+  { code: "th", label: "Thai", nativeLabel: "ไทย", short: "TH", group: "World" },
 ];
+
+export const LANGUAGE_GROUPS: Array<LanguageOption["group"]> = ["Popular", "African", "World"];
 
 export const DEFAULT_LANGUAGE = "en";
 const COOKIE_NAME = "googtrans";
