@@ -114,22 +114,32 @@ const handler = async (req: Request): Promise<Response> => {
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const { error: dbError } = await supabase.from("estimates").insert({
-      client_name: data.clientName,
-      client_email: data.clientEmail,
-      package_name: data.packageName,
-      line_items: data.lineItems,
-      custom_features: data.customFeatures || "",
-      grand_total: data.grandTotal,
-      status: "pending",
-    });
+    const { data: inserted, error: dbError } = await supabase
+      .from("estimates")
+      .insert({
+        client_name: data.clientName,
+        client_email: data.clientEmail,
+        package_name: data.packageName,
+        line_items: data.lineItems,
+        custom_features: data.customFeatures || "",
+        grand_total: data.grandTotal,
+        status: "pending",
+      })
+      .select("id")
+      .single();
 
     if (dbError) {
       console.error("DB insert error:", dbError);
     }
 
-    const results: { clientEmail?: boolean; teamEmail?: boolean; dbStored?: boolean } = {
+    const results: {
+      clientEmail?: boolean;
+      teamEmail?: boolean;
+      dbStored?: boolean;
+      estimateId?: string;
+    } = {
       dbStored: !dbError,
+      estimateId: inserted?.id,
     };
 
     // Send to Gotechpluz team
