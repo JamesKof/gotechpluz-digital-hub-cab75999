@@ -48,7 +48,7 @@ const LanguageSwitcher = ({ variant = "compact", onSelect }: LanguageSwitcherPro
           <span className={variant === "full" ? "" : "hidden xl:inline"}>
             {active.nativeLabel}
           </span>
-          <span className="ml-auto text-base leading-none">{active.flag}</span>
+          <span className="ml-auto text-xs font-semibold tracking-wide text-primary">{active.short}</span>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -61,7 +61,7 @@ const LanguageSwitcher = ({ variant = "compact", onSelect }: LanguageSwitcherPro
             onClick={() => handleSelect(lang.code)}
             className="cursor-pointer gap-2 rounded-lg text-sm"
           >
-            <span className="text-base leading-none">{lang.flag}</span>
+            <span className="w-7 text-xs font-semibold tracking-wide text-primary">{lang.short}</span>
             <span>{lang.nativeLabel}</span>
             <span className="text-muted-foreground text-xs">{lang.label}</span>
             {lang.code === current && <Check className="ml-auto h-3.5 w-3.5 text-primary" />}

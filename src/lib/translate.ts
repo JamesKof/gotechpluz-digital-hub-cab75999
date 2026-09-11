@@ -8,18 +8,18 @@ export interface LanguageOption {
   code: string;
   label: string;
   nativeLabel: string;
-  flag: string;
+  short: string;
   rtl?: boolean;
 }
 
 export const LANGUAGES: LanguageOption[] = [
-  { code: "en", label: "English", nativeLabel: "English", flag: "🇬🇧" },
-  { code: "fr", label: "French", nativeLabel: "Français", flag: "🇫🇷" },
-  { code: "es", label: "Spanish", nativeLabel: "Español", flag: "🇪🇸" },
-  { code: "pt", label: "Portuguese", nativeLabel: "Português", flag: "🇵🇹" },
-  { code: "de", label: "German", nativeLabel: "Deutsch", flag: "🇩🇪" },
-  { code: "zh-CN", label: "Chinese", nativeLabel: "中文", flag: "🇨🇳" },
-  { code: "ar", label: "Arabic", nativeLabel: "العربية", flag: "🇸🇦", rtl: true },
+  { code: "en", label: "English", nativeLabel: "English", short: "EN" },
+  { code: "fr", label: "French", nativeLabel: "Français", short: "FR" },
+  { code: "es", label: "Spanish", nativeLabel: "Español", short: "ES" },
+  { code: "pt", label: "Portuguese", nativeLabel: "Português", short: "PT" },
+  { code: "de", label: "German", nativeLabel: "Deutsch", short: "DE" },
+  { code: "zh-CN", label: "Chinese", nativeLabel: "中文", short: "ZH" },
+  { code: "ar", label: "Arabic", nativeLabel: "العربية", short: "AR", rtl: true },
 ];
 
 export const DEFAULT_LANGUAGE = "en";
