@@ -73,7 +73,7 @@ const COUNTRY_LANGUAGE_MAP: Record<string, string> = {
   // French
   FR: "fr", BE: "fr", LU: "fr", MC: "fr", TG: "fr", BJ: "fr", CI: "fr", SN: "fr",
   BF: "fr", ML: "fr", NE: "fr", GN: "fr", CM: "fr", GA: "fr", CD: "fr", CG: "fr",
-  TD: "fr", MG: "fr", RW: "fr", BI: "fr", HT: "fr",
+  TD: "fr", HT: "fr",
   // Spanish
   ES: "es", MX: "es", AR: "es", CO: "es", CL: "es", PE: "es", VE: "es", EC: "es",
   GT: "es", CU: "es", BO: "es", DO: "es", HN: "es", PY: "es", SV: "es", NI: "es",
